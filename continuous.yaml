@@ -14,7 +14,7 @@ jobs:
   - createService:
     - cmd: if [ -f ${serviceDir}/continuous.service ] ; then echo 1 ; else echo 0 ; fi
     - if:
-      type: !contain
+      type: equal
       value: 0
       jobs:
         - cmd: touch continuous.service
@@ -42,15 +42,47 @@ jobs:
       repeat: 2                               # remove to infinity loop
       sleepTIme: 10000                        # milliseconds
       jobs:
-        - updateDB:
-
-        - updateServer:
-          - cmd: git -C $workDir pull
-          - if:
-            type: !contain
-            value: Already up to date
-            jobs:
+        - cmd: git -C $workDir pull
+        - if:
+          type: !contain
+          value: Already up to date
+          jobs:
+            - updateDB:
+              - cmd: ${workDir}/db/migration/
+              - cmd: if [ -f ${workDir}/db/migration/config.env ] ; then echo 1 ; else echo 0 ; fi
+              - if:
+                  type: equal
+                  value: 0
+                  jobs:
+                    - cmd: touch ${workDir}/db/migration/config.env
+                    - cmd: |
+                       echo '
+                        DB_HOST = ${databaseHost}
+                        DB_PORT = ${databasePort}
+                        DB_NAME = ${databaseName}
+                        DB_USER = ${databaseUser}
+                        DB_PASSWORD = ${databasePass}
+                        FILES_PATH = sqlFiles/
+                        FILES_SORT = UPDATE_DATE_ASC
+                       ' > ${workDir}/db/migration/config.env
+                    - cmd: ${workDir}/db/migration/migration-linux-amd64
+            - updateServer:
               - cmd: sudo systemctl stop continuous
+              - cmd: touch ${workDir}/server/config.js
+              - cmd: |
+                  echo '
+                   export const config = {
+                      version:'0.0.1',
+                      environment:'L',
+                      domain:'localhost',
+                      port:4000,
+                      databaseHost:'${databaseHost}',
+                      databasePort:'${databasePort}',
+                      databaseName:'${databaseName}',
+                      databaseUser:'${databaseUser}',
+                      databasePass:'${databasePass}',
+                    }
+                  ' > ${workDir}/db/migration/config.env
               - replace:
                 file: ${workDir}/server/config.js
                 match: databaseHost:'localhost'
