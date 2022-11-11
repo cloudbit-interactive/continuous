@@ -93,3 +93,4 @@ jobs:
               - replace: --file=${workDir}/server/config.js --match=databasePass:'root' --to=databasePass:'${databasePass}'
               - replace: --file=${workDir}/server/config.js --match=databaseHost:'localhost' --to=databaseHost:'${databaseHost}'
               - cmd: sudo systemctl start continuous
+
