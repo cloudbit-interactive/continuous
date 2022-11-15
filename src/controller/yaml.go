@@ -5,6 +5,7 @@ import (
 	"gopkg.in/yaml.v3"
 	"net/http"
 	"os"
+	"strings"
 )
 
 var YamlData map[string]interface{}
@@ -55,15 +56,19 @@ func YamlJob(job map[string]interface{}) {
 }
 
 func YamlProcessJob(job map[string]interface{}) {
-	cuppago.Log(job)
 	if job[CMD] != nil {
-		cmd := cuppago.String(job[CMD])
-		cmd = YamlReplaceString(cmd)
-		cuppago.Log("Process COMMAND", cmd)
-
-		//output := exec.Command("if", "[ -f ${serviceDir}/continuous.service ] ; then echo 1 ; else echo 0 ; fi")
-		//cuppago.Log("OUTPUT", output)
-
+		cmd := job[CMD].(map[string]interface{})
+		dir := "./"
+		if cmd["workingDirectory"] != nil {
+			dir = cmd["workingDirectory"].(string)
+		}
+		argsSeparator := " "
+		if cmd["argsSeparator"] != nil {
+			argsSeparator = cmd["argsSeparator"].(string)
+		}
+		args := strings.Split(cmd["args"].(string), argsSeparator)
+		output := Command(cmd["app"].(string), args, dir)
+		println(output)
 	} else if job[IF] != nil {
 		cuppago.Log("Process IF", job[IF])
 	} else if job[STOP] != nil {
@@ -72,7 +77,6 @@ func YamlProcessJob(job map[string]interface{}) {
 	}
 }
 
-func YamlReplaceString(string string) string {
-	string = cuppago.ReplaceNotCase(string, "{serviceDir}", "ddd")
-	return string
+func YamlCommand(string string) string {
+	return ""
 }
