@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"os"
 	"strings"
+	"time"
 )
 
 var YamlData map[string]interface{}
@@ -26,49 +27,40 @@ func ProcessYamlString(yamlString string) {
 	}
 	YamlData = yamlData
 	YamlVars = yamlData["vars"].(map[string]interface{})
-	YamlProcessMainJobs()
-	//YamlMainJobs(yamlData["jobs"].([]interface{}))
+	jobs := YamlData["jobs"].([]interface{})
+	if jobs != nil {
+		YamlProcessJobs(jobs)
+	}
 	cuppago.Log("Continuous running in http://localhost:" + port)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":"+port, nil)
 }
 
-func YamlProcessMainJobs() {
-	if YamlData["jobs"] == nil {
-		return
-	}
-	jobs := YamlData["jobs"].([]interface{})
+func YamlProcessJobs(jobs []interface{}) {
 	for i := 0; i < len(jobs); i++ {
 		YamlJob(jobs[i].(map[string]interface{}))
 	}
 }
 
 func YamlJob(job map[string]interface{}) {
-	//cuppago.Log("NEW-->", job, cuppago.Type(job))
 	for key := range job {
-		//cuppago.Log(job)
-		if job[key] == nil {
-			println("no subjobs for [", key, "]")
+		if key == CMD {
+			output := YamlCommand(job[CMD])
+			YamlOutput = append(YamlOutput, output)
+		} else if key == IF {
+			YamlIf(job[IF].(map[string]interface{}))
+		} else if key == LOOP {
+			go YamlLoop(job[LOOP].(map[string]interface{}))
+		} else if key == STOP {
+			os.Exit(0)
+		} else if job[key] == nil {
+			cuppago.LogFile("No jobs for [", key, "]")
 		} else {
 			jobs := job[key].([]interface{})
 			for i := 0; i < len(jobs); i++ {
-				YamlProcessJob(jobs[i].(map[string]interface{}))
+				YamlJob(jobs[i].(map[string]interface{}))
 			}
 		}
-	}
-}
-
-func YamlProcessJob(job map[string]interface{}) {
-	if job[CMD] != nil {
-		output := YamlCommand(job[CMD])
-		YamlOutput = append(YamlOutput, output)
-	} else if job[IF] != nil {
-		YamlIf(job[IF].(map[string]interface{}))
-		//output := YamlOutput[len(YamlOutput)-1 : len(YamlOutput)]
-		//cuppago.Log("Process IF", job[IF], output)
-	} else if job[STOP] != nil {
-		cuppago.Log("Process STOP", job[STOP])
-		os.Exit(0)
 	}
 }
 
@@ -94,10 +86,33 @@ func YamlCommand(command interface{}) string {
 }
 
 func YamlIf(data map[string]interface{}) {
-	output := YamlOutput[len(YamlOutput)-1]
-	cuppago.Log("--", data["type"], output, data["value"])
-	if data["type"] == EQUAL && fmt.Sprint(output) == fmt.Sprint(data["value"]) {
-		cuppago.Log("IS SAME", output, data["jobs"])
+	jobs := data["jobs"].([]interface{})
+	if jobs == nil {
+		return
 	}
+	output := YamlOutput[len(YamlOutput)-1]
+	if data["type"] == EQUAL && fmt.Sprint(output) == fmt.Sprint(data["value"]) {
+		YamlProcessJobs(jobs)
+	} else if data["type"] == NOT_EQUAL && fmt.Sprint(output) != fmt.Sprint(data["value"]) {
+		YamlProcessJobs(jobs)
+	} else if data["type"] == CONTAIN && strings.Contains(fmt.Sprint(output), fmt.Sprint(data["value"])) {
+		YamlProcessJobs(jobs)
+	} else if data["type"] == NOT_CONTAIN && !strings.Contains(fmt.Sprint(output), fmt.Sprint(data["value"])) {
+		YamlProcessJobs(jobs)
+	}
+}
 
+func YamlLoop(data map[string]interface{}) {
+	jobs := data["jobs"].([]interface{})
+	if jobs == nil {
+		return
+	}
+	YamlProcessJobs(jobs)
+	sleepTime, err := time.ParseDuration(fmt.Sprint(data["sleepTime"]) + "ms")
+	if err != nil {
+		cuppago.Error(err)
+		return
+	}
+	time.Sleep(sleepTime)
+	YamlLoop(data)
 }

@@ -16,6 +16,7 @@ func ReplaceString(string string) string {
 
 func BashCommand(command string) string {
 	outputString := ""
+	command = ReplaceString(command)
 	output, err := exec.Command("bash", "-c", command).Output()
 	if err != nil {
 		outputString = cuppago.String(err)
@@ -24,12 +25,13 @@ func BashCommand(command string) string {
 	}
 	outputString = strings.TrimSpace(outputString)
 	outputString = strings.Trim(outputString, "\n")
+	cuppago.LogFile("CMD", command, outputString)
 	return outputString
 }
 
 func Command(app string, args []string, workingDirectory string) string {
 	for i := 0; i < len(args); i++ {
-		args[i] = strings.TrimSpace(args[i])
+		args[i] = strings.TrimSpace(ReplaceString(args[i]))
 	}
 	var output bytes.Buffer
 	cmd := exec.Command(app, args...)
@@ -44,5 +46,6 @@ func Command(app string, args []string, workingDirectory string) string {
 	}
 	outputString = strings.TrimSpace(outputString)
 	outputString = strings.Trim(outputString, "\n")
+	cuppago.LogFile("CMD:", app, args, outputString)
 	return outputString
 }

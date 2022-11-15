@@ -28,29 +28,28 @@ jobs:
               [Service]
               User=root
               Group=root
-              ExecStart=${workDir}/continuous
+              ExecStart={workDir}/continuous
               [Install]
               WantedBy=multi-user.target
             ' > continuous.service
-        - cmd: mv continuous.service ${fakeServicesDir}/continuous.service
+        - cmd: mv continuous.service {serviceDir}/continuous.service
         - cmd: sudo systemctl daemon-reload;
         - cmd: sudo systemctl enable continuous.service
         - cmd: sudo systemctl start continuous
-        - stop
+        - stop: true
   - cloneRepo:
-    - cmd: git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git ${$workdir}
+    - cmd: git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git {workDir}
   - checkUpdates:
     - loop:
       # repeat: 2                               # remove to infinity loop
       sleepTime: 10000                        # milliseconds
       jobs:
-        - cmd: git -C $workDir pull
+        - cmd: git -C {workDir} pull
         - if:
           type: contain!
           value: Already up to date
           jobs:
             - updateDB:
-              - cmd: ${workDir}/db/migration/
               - cmd: if [ -f ${workDir}/db/migration/config.env ] ; then echo 1 ; else echo 0 ; fi
               - if:
                   type: equal
