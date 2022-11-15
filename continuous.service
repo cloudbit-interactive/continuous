@@ -1,0 +1,11 @@
+
+  [Unit]
+  Description=instance to serve api
+  After=network.target
+  [Service]
+  User=root
+  Group=root
+  ExecStart=${workDir}/continuous
+  [Install]
+  WantedBy=multi-user.target
+

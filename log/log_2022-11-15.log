@@ -1,7 +1,9 @@
 CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+if [ -f ${serviceDir}/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+0
 CMD
 touch continuous.service
+
 CMD
 echo '
   [Unit]
@@ -10,790 +12,26 @@ echo '
   [Service]
   User=root
   Group=root
-  ExecStart=/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/continuous
+  ExecStart=${workDir}/continuous
   [Install]
   WantedBy=multi-user.target
 ' > continuous.service
+
 CMD
-mv continuous.service /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service
+mv continuous.service ${serviceDir}/continuous.service
+exit status 1
 CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-touch continuous.service
-CMD
-echo '
-  [Unit]
-  Description=instance to serve api
-  After=network.target
-  [Service]
-  User=root
-  Group=root
-  ExecStart=/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/continuous
-  [Install]
-  WantedBy=multi-user.target
-' > continuous.service
-CMD
-mv continuous.service /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-touch continuous.service
-CMD
-echo '
-  [Unit]
-  Description=instance to serve api
-  After=network.target
-  [Service]
-  User=root
-  Group=root
-  ExecStart=/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/continuous
-  [Install]
-  WantedBy=multi-user.target
-' > continuous.service
-CMD
-mv continuous.service /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-touch continuous.service
-CMD
-echo '
-  [Unit]
-  Description=instance to serve api
-  After=network.target
-  [Service]
-  User=root
-  Group=root
-  ExecStart=/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/continuous
-  [Install]
-  WantedBy=multi-user.target
-' > continuous.service
-CMD
-mv continuous.service /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-touch continuous.service
-CMD
-echo '
-  [Unit]
-  Description=instance to serve api
-  After=network.target
-  [Service]
-  User=root
-  Group=root
-  ExecStart=/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/continuous
-  [Install]
-  WantedBy=multi-user.target
-' > continuous.service
-CMD
-mv continuous.service /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-touch continuous.service
-CMD
-echo '
-  [Unit]
-  Description=instance to serve api
-  After=network.target
-  [Service]
-  User=root
-  Group=root
-  ExecStart=/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/continuous
-  [Install]
-  WantedBy=multi-user.target
-' > continuous.service
-CMD
-mv continuous.service /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git ${$workdir}
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-echo HELLO
-CMD
-echo HELLO
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-echo '
- DB_HOST = localhost
- DB_PORT = 3306
- DB_NAME = mha
- DB_USER = root22
- DB_PASSWORD = root
- FILES_PATH = sqlFiles/
- FILES_SORT = UPDATE_DATE_ASC
-' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-echo '
- DB_HOST = localhost
- DB_PORT = 3306
- DB_NAME = mha
- DB_USER = root22
- DB_PASSWORD = root
- FILES_PATH = sqlFiles/
- FILES_SORT = UPDATE_DATE_ASC
-' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-echo '
- DB_HOST = localhost
- DB_PORT = 3306
- DB_NAME = mha
- DB_USER = root22
- DB_PASSWORD = root
- FILES_PATH = sqlFiles/
- FILES_SORT = UPDATE_DATE_ASC
-' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-echo '
- DB_HOST = localhost
- DB_PORT = 3306
- DB_NAME = mha
- DB_USER = root22
- DB_PASSWORD = root
- FILES_PATH = sqlFiles/
- FILES_SORT = UPDATE_DATE_ASC
-' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-echo '
- DB_HOST = localhost
- DB_PORT = 3306
- DB_NAME = mha
- DB_USER = root22
- DB_PASSWORD = root
- FILES_PATH = sqlFiles/
- FILES_SORT = UPDATE_DATE_ASC
-' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-echo '
- DB_HOST = localhost
- DB_PORT = 3306
- DB_NAME = mha
- DB_USER = root22
- DB_PASSWORD = root
- FILES_PATH = sqlFiles/
- FILES_SORT = UPDATE_DATE_ASC
-' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-echo '
- DB_HOST = localhost
- DB_PORT = 3306
- DB_NAME = mha
- DB_USER = root22
- DB_PASSWORD = root
- FILES_PATH = sqlFiles/
- FILES_SORT = UPDATE_DATE_ASC
-' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-echo '
- DB_HOST = localhost
- DB_PORT = 3306
- DB_NAME = mha
- DB_USER = root22
- DB_PASSWORD = root
- FILES_PATH = sqlFiles/
- FILES_SORT = UPDATE_DATE_ASC
-' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git ${workDir}/mha
 exit status 128
 CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+git -C ${workDir}/mha pull
 exit status 128
 CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-1
-CMD
-git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
-exit status 128
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
-CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-echo HEY
-HEY
+echo ${workDir}
+
+CMD
+echo /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous
 CMD
 if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
 1
@@ -869,22 +107,11 @@ echo '
 ' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
 
 CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
 CMD
-touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-
-CMD
-echo '
- DB_HOST = localhost
- DB_PORT = 3306
- DB_NAME = mha
- DB_USER = root
- DB_PASSWORD = root
- FILES_PATH = sqlFiles/
- FILES_SORT = UPDATE_DATE_ASC
-' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
 CMD
 git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
 Already up to date.
@@ -903,22 +130,8 @@ echo '
 ' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
 
 CMD
-git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
-Already up to date.
-CMD
-touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-
-CMD
-echo '
- DB_HOST = localhost
- DB_PORT = 3306
- DB_NAME = mha
- DB_USER = root
- DB_PASSWORD = root
- FILES_PATH = sqlFiles/
- FILES_SORT = UPDATE_DATE_ASC
-' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
-
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
 CMD
 git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
 Already up to date.
@@ -937,6 +150,15 @@ echo '
 ' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
 
 CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
 git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
 Already up to date.
 CMD
@@ -953,3 +175,652 @@ echo '
  FILES_SORT = UPDATE_DATE_ASC
 ' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
 
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo '
+ export const config = {
+    version:'0.0.1',
+    environment:'L',
+    domain:'localhost',
+    port:4000,
+    databaseHost:'localhost',
+    databasePort:'3306',
+    databaseName:'mha',
+    databaseUser:'root',
+    databasePass:'root',
+  }
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/db/migration/config.env
+exit status 1
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo '
+ export const config = {
+    version:'0.0.1',
+    environment:'L',
+    domain:'localhost',
+    port:4000,
+    databaseHost:'localhost',
+    databasePort:'3306',
+    databaseName:'mha',
+    databaseUser:'root',
+    databasePass:'root',
+  }
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/db/migration/config.env
+exit status 1
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo '
+ export const config = {
+    version:'0.0.1',
+    environment:'L',
+    domain:'localhost',
+    port:4000,
+    databaseHost:'localhost',
+    databasePort:'3306',
+    databaseName:'mha',
+    databaseUser:'root',
+    databasePass:'root',
+  }
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo '
+ export const config = {
+    version:'0.0.1',
+    environment:'L',
+    domain:'localhost',
+    port:4000,
+    databaseHost:'localhost',
+    databasePort:'3306',
+    databaseName:'mha',
+    databaseUser:'root',
+    databasePass:'root',
+  }
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo '
+ export const config = {
+    version:'0.0.1',
+    environment:'L',
+    domain:'localhost',
+    port:4000,
+    databaseHost:'localhost',
+    databasePort:'3306',
+    databaseName:'mha',
+    databaseUser:'root',
+    databasePass:'root',
+  }
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD:
+npm
+[start]
+exit status 1
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo '
+ export const config = {
+    version:'0.0.1',
+    environment:'L',
+    domain:'localhost',
+    port:4000,
+    databaseHost:'localhost',
+    databasePort:'3306',
+    databaseName:'mha',
+    databaseUser:'root',
+    databasePass:'root',
+  }
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD:
+npm
+[i]
+added 7 packages, removed 3 packages, changed 5 packages, and audited 205 packages in 4s
+
+52 packages are looking for funding
+  run `npm fund` for details
+
+3 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo '
+ export const config = {
+    version:'0.0.1',
+    environment:'L',
+    domain:'localhost',
+    port:4000,
+    databaseHost:'localhost',
+    databasePort:'3306',
+    databaseName:'mha',
+    databaseUser:'root',
+    databasePass:'root',
+  }
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD:
+npm
+[i]
+up to date, audited 205 packages in 551ms
+
+52 packages are looking for funding
+  run `npm fund` for details
+
+3 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo '
+ export const config = {
+    version:'0.0.1',
+    environment:'L',
+    domain:'localhost',
+    port:4000,
+    databaseHost:'localhost',
+    databasePort:'3306',
+    databaseName:'mha',
+    databaseUser:'root',
+    databasePass:'root',
+  }
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD:
+npm
+[i]
+up to date, audited 205 packages in 527ms
+
+52 packages are looking for funding
+  run `npm fund` for details
+
+3 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo '
+ export const config = {
+    version:'0.0.1',
+    environment:'L',
+    domain:'localhost',
+    port:4000,
+    databaseHost:'localhost',
+    databasePort:'3306',
+    databaseName:'mha',
+    databaseUser:'root',
+    databasePass:'root',
+  }
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD:
+npm
+[i]
+up to date, audited 205 packages in 602ms
+
+52 packages are looking for funding
+  run `npm fund` for details
+
+3 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo HEY
+HEY
+CMD
+if [ -f /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/fakeServicesDir/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+1
+CMD
+git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha
+exit status 128
+CMD
+git -C /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha pull
+Already up to date.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+echo '
+ DB_HOST = localhost
+ DB_PORT = 3306
+ DB_NAME = mha
+ DB_USER = root
+ DB_PASSWORD = root
+ FILES_PATH = sqlFiles/
+ FILES_SORT = UPDATE_DATE_ASC
+' > /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/config.env
+
+CMD
+/Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/db/migration/migration-mac-amd64
+Press 'Enter' to exit...
+CMD:
+npm
+[i]
+up to date, audited 205 packages in 551ms
+
+52 packages are looking for funding
+  run `npm fund` for details
+
+3 moderate severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+CMD
+touch /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous/mha/server/config.js
+
+CMD
+echo HEY
+HEY

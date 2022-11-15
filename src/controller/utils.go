@@ -9,7 +9,7 @@ import (
 
 func ReplaceString(string string) string {
 	for key := range YamlVars {
-		string = cuppago.ReplaceNotCase(string, "{"+key+"}", cuppago.String(YamlVars[key]))
+		string = cuppago.ReplaceNotCase(string, "\\${"+key+"}", cuppago.String(YamlVars[key]))
 	}
 	return string
 }

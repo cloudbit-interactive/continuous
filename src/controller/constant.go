@@ -1,12 +1,12 @@
 package controller
 
 const (
-	CMD         = "cmd"
-	IF          = "if"
-	EQUAL       = "equal"
-	NOT_EQUAL   = "equal!"
-	CONTAIN     = "contain"
-	NOT_CONTAIN = "contain!"
-	STOP        = "stop"
-	LOOP        = "loop"
+	CMD        = "cmd"
+	If         = "if"
+	Equal      = "equal"
+	NotEqual   = "equal!"
+	Contain    = "contain"
+	NotContain = "contain!"
+	Stop       = "stop"
+	Loop       = "loop"
 )

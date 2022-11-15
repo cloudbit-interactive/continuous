@@ -47,11 +47,11 @@ func YamlJob(job map[string]interface{}) {
 		if key == CMD {
 			output := YamlCommand(job[CMD])
 			YamlOutput = append(YamlOutput, output)
-		} else if key == IF {
-			YamlIf(job[IF].(map[string]interface{}))
-		} else if key == LOOP {
-			go YamlLoop(job[LOOP].(map[string]interface{}))
-		} else if key == STOP {
+		} else if key == If {
+			YamlIf(job[If].(map[string]interface{}))
+		} else if key == Loop {
+			go YamlLoop(job[Loop].(map[string]interface{}))
+		} else if key == Stop {
 			os.Exit(0)
 		} else if job[key] == nil {
 			cuppago.LogFile("No jobs for [", key, "]")
@@ -73,6 +73,7 @@ func YamlCommand(command interface{}) string {
 		dir := "./"
 		if cmd["workingDirectory"] != nil {
 			dir = cmd["workingDirectory"].(string)
+			dir = ReplaceString(dir)
 		}
 		argsSeparator := " "
 		if cmd["argsSeparator"] != nil {
@@ -91,13 +92,13 @@ func YamlIf(data map[string]interface{}) {
 		return
 	}
 	output := YamlOutput[len(YamlOutput)-1]
-	if data["type"] == EQUAL && fmt.Sprint(output) == fmt.Sprint(data["value"]) {
+	if data["type"] == Equal && fmt.Sprint(output) == fmt.Sprint(data["value"]) {
 		YamlProcessJobs(jobs)
-	} else if data["type"] == NOT_EQUAL && fmt.Sprint(output) != fmt.Sprint(data["value"]) {
+	} else if data["type"] == NotEqual && fmt.Sprint(output) != fmt.Sprint(data["value"]) {
 		YamlProcessJobs(jobs)
-	} else if data["type"] == CONTAIN && strings.Contains(fmt.Sprint(output), fmt.Sprint(data["value"])) {
+	} else if data["type"] == Contain && strings.Contains(fmt.Sprint(output), fmt.Sprint(data["value"])) {
 		YamlProcessJobs(jobs)
-	} else if data["type"] == NOT_CONTAIN && !strings.Contains(fmt.Sprint(output), fmt.Sprint(data["value"])) {
+	} else if data["type"] == NotContain && !strings.Contains(fmt.Sprint(output), fmt.Sprint(data["value"])) {
 		YamlProcessJobs(jobs)
 	}
 }
