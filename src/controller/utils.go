@@ -14,6 +14,19 @@ func ReplaceString(string string) string {
 	return string
 }
 
+func BashCommand(command string) string {
+	outputString := ""
+	output, err := exec.Command("bash", "-c", command).Output()
+	if err != nil {
+		outputString = cuppago.String(err)
+	} else {
+		outputString = string(output)
+	}
+	outputString = strings.TrimSpace(outputString)
+	outputString = strings.Trim(outputString, "\n")
+	return outputString
+}
+
 func Command(app string, args []string, workingDirectory string) string {
 	for i := 0; i < len(args); i++ {
 		args[i] = strings.TrimSpace(args[i])

@@ -13,10 +13,13 @@ vars:
   serviceDir: ./fakeServicesDir
 jobs:
   - createService:
-#    - cmd: if [ -f {serviceDir}/continuous.service ] ; then echo 1 ; else echo 0 ; fi
-     - cmd:
-         app: zip
-         args: test.zip README.md
+    - cmd: if [ -f {serviceDir}/continuous.service ] ; then echo 1 ; else echo 0 ; fi
+#     - cmd:
+#         app: zip
+#         args: test.zip README.md
+#     - cmd: zip test.zip README.md
+#     - cmd: echo hello
+#     - cmd: echo $RANDOM
 #    - if:
 #      type: equal
 #      value: 0

@@ -10,8 +10,10 @@ import (
 
 var YamlData map[string]interface{}
 var YamlVars map[string]interface{}
+var YamlOutput []string
 
 func ProcessYamlString(yamlString string) {
+	YamlOutput = []string{}
 	yamlData := make(map[string]interface{})
 	err := yaml.Unmarshal([]byte(yamlString), yamlData)
 	if err != nil {
@@ -57,18 +59,24 @@ func YamlJob(job map[string]interface{}) {
 
 func YamlProcessJob(job map[string]interface{}) {
 	if job[CMD] != nil {
-		cmd := job[CMD].(map[string]interface{})
-		dir := "./"
-		if cmd["workingDirectory"] != nil {
-			dir = cmd["workingDirectory"].(string)
+		if cuppago.Type(job[CMD]) == "string" {
+			output := BashCommand(job[CMD].(string))
+			YamlOutput = append(YamlOutput, output)
+		} else {
+			cmd := job[CMD].(map[string]interface{})
+			dir := "./"
+			if cmd["workingDirectory"] != nil {
+				dir = cmd["workingDirectory"].(string)
+			}
+			argsSeparator := " "
+			if cmd["argsSeparator"] != nil {
+				argsSeparator = cmd["argsSeparator"].(string)
+			}
+			args := strings.Split(cmd["args"].(string), argsSeparator)
+			output := Command(cmd["app"].(string), args, dir)
+			YamlOutput = append(YamlOutput, output)
 		}
-		argsSeparator := " "
-		if cmd["argsSeparator"] != nil {
-			argsSeparator = cmd["argsSeparator"].(string)
-		}
-		args := strings.Split(cmd["args"].(string), argsSeparator)
-		output := Command(cmd["app"].(string), args, dir)
-		println(output)
+		cuppago.Log(YamlOutput)
 	} else if job[IF] != nil {
 		cuppago.Log("Process IF", job[IF])
 	} else if job[STOP] != nil {
