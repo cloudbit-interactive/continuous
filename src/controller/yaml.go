@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"github.com/cloudbit-interactive/cuppago"
 	"gopkg.in/yaml.v3"
 	"net/http"
@@ -59,32 +60,44 @@ func YamlJob(job map[string]interface{}) {
 
 func YamlProcessJob(job map[string]interface{}) {
 	if job[CMD] != nil {
-		if cuppago.Type(job[CMD]) == "string" {
-			output := BashCommand(job[CMD].(string))
-			YamlOutput = append(YamlOutput, output)
-		} else {
-			cmd := job[CMD].(map[string]interface{})
-			dir := "./"
-			if cmd["workingDirectory"] != nil {
-				dir = cmd["workingDirectory"].(string)
-			}
-			argsSeparator := " "
-			if cmd["argsSeparator"] != nil {
-				argsSeparator = cmd["argsSeparator"].(string)
-			}
-			args := strings.Split(cmd["args"].(string), argsSeparator)
-			output := Command(cmd["app"].(string), args, dir)
-			YamlOutput = append(YamlOutput, output)
-		}
-		cuppago.Log(YamlOutput)
+		output := YamlCommand(job[CMD])
+		YamlOutput = append(YamlOutput, output)
 	} else if job[IF] != nil {
-		cuppago.Log("Process IF", job[IF])
+		YamlIf(job[IF].(map[string]interface{}))
+		//output := YamlOutput[len(YamlOutput)-1 : len(YamlOutput)]
+		//cuppago.Log("Process IF", job[IF], output)
 	} else if job[STOP] != nil {
 		cuppago.Log("Process STOP", job[STOP])
 		os.Exit(0)
 	}
 }
 
-func YamlCommand(string string) string {
-	return ""
+func YamlCommand(command interface{}) string {
+	if cuppago.Type(command) == "string" {
+		output := BashCommand(command.(string))
+		return output
+	} else {
+		cmd := command.(map[string]interface{})
+		dir := "./"
+		if cmd["workingDirectory"] != nil {
+			dir = cmd["workingDirectory"].(string)
+		}
+		argsSeparator := " "
+		if cmd["argsSeparator"] != nil {
+			argsSeparator = cmd["argsSeparator"].(string)
+		}
+		args := strings.Split(cmd["args"].(string), argsSeparator)
+		output := Command(cmd["app"].(string), args, dir)
+		YamlOutput = append(YamlOutput, output)
+		return output
+	}
+}
+
+func YamlIf(data map[string]interface{}) {
+	output := YamlOutput[len(YamlOutput)-1]
+	cuppago.Log("--", data["type"], output, data["value"])
+	if data["type"] == EQUAL && fmt.Sprint(output) == fmt.Sprint(data["value"]) {
+		cuppago.Log("IS SAME", output, data["jobs"])
+	}
+
 }
