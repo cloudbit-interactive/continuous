@@ -36,6 +36,20 @@ jobs:
           - cmd: mv continuous.service ${serviceDir}/continuous.service
   - cloneRepo:
     - cmd: git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git ${workDir}/mha
+  - &updateDB:
+      - cmd: touch ${workDir}/mha/db/migration/config.env
+      - cmd: |
+          echo '
+           DB_HOST = ${databaseHost}
+           DB_PORT = ${databasePort}
+           DB_NAME = ${databaseName}
+           DB_USER = ${databaseUser}
+           DB_PASSWORD = ${databasePass}
+           FILES_PATH = sqlFiles/
+           EXIT = true
+           FILES_SORT = UPDATE_DATE_ASC
+          ' > ${workDir}/mha/db/migration/config.env
+      - cmd: ${workDir}/mha/db/migration/migration-mac-amd64
   - checkUpdates:
     - loop:
         sleepTime: 10000
@@ -45,20 +59,7 @@ jobs:
               type: contain!
               value: Already up to date
               jobs:
-                - updateDB:
-                  - cmd: touch ${workDir}/mha/db/migration/config.env
-                  - cmd: |
-                      echo '
-                       DB_HOST = ${databaseHost}
-                       DB_PORT = ${databasePort}
-                       DB_NAME = ${databaseName}
-                       DB_USER = ${databaseUser}
-                       DB_PASSWORD = ${databasePass}
-                       FILES_PATH = sqlFiles/
-                       EXIT = true
-                       FILES_SORT = UPDATE_DATE_ASC
-                      ' > ${workDir}/mha/db/migration/config.env
-                  - cmd: ${workDir}/mha/db/migration/migration-mac-amd64
+                - *updateDB
                 - updateServer:
                   - cmd:
                       app: npm
@@ -91,3 +92,4 @@ jobs:
                       app: npm
                       args: run server
                       workingDirectory: ${workDir}/mha/server
+
