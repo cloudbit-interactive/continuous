@@ -17,7 +17,7 @@ func ReplaceString(string string) string {
 func BashCommand(command string) string {
 	outputString := ""
 	command = ReplaceString(command)
-	cuppago.LogFile("-- CMD: " + command)
+	Log("-- CMD: " + command)
 	output, err := exec.Command("bash", "-c", command).Output()
 	if err != nil {
 		outputString = cuppago.String(err)
@@ -26,7 +26,7 @@ func BashCommand(command string) string {
 	}
 	outputString = strings.TrimSpace(outputString)
 	outputString = strings.Trim(outputString, "\n")
-	cuppago.LogFile("---- output: " + outputString)
+	Log("---- output: " + outputString)
 	return outputString
 }
 
@@ -35,7 +35,7 @@ func Command(app string, args []string, workingDirectory string) string {
 		args[i] = strings.TrimSpace(ReplaceString(args[i]))
 	}
 	workingDirectory = strings.TrimSpace(ReplaceString(workingDirectory))
-	cuppago.LogFile("-- CMD: "+app+" ", "-- args: ", args, "-- workingDirectory: "+workingDirectory)
+	Log("-- CMD: "+app, "-- args: ", args, "-- workingDirectory: "+workingDirectory)
 	var output bytes.Buffer
 	cmd := exec.Command(app, args...)
 	cmd.Dir = workingDirectory
@@ -49,6 +49,13 @@ func Command(app string, args []string, workingDirectory string) string {
 	}
 	outputString = strings.TrimSpace(outputString)
 	outputString = strings.Trim(outputString, "\n")
-	cuppago.LogFile("---- output: " + outputString)
+	Log("---- output: " + outputString)
 	return outputString
+}
+
+func Log(values ...interface{}) {
+	if YamlData["log"] == false {
+		return
+	}
+	cuppago.LogFile(values...)
 }

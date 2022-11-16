@@ -1,6 +1,6 @@
 name: nameApp
 version: 0.0.1
-port: 9184
+log: true
 vars:
   domain: localhost
   port: 4000
@@ -21,8 +21,8 @@ tasks:
        value: 0
        jobs:
 #         - cmd: sudo systemctl stop continuous
-         - cmd: touch continuous.service
-         - cmd: |
+          - cmd: touch continuous.service
+          - cmd: |
              echo '
                [Unit]
                Description=instance to serve api
@@ -34,8 +34,10 @@ tasks:
                [Install]
                WantedBy=multi-user.target
              ' > continuous.service
-         - cmd: mv continuous.service ${serviceDir}/continuous.service
+          - cmd: mv continuous.service ${serviceDir}/continuous.service
 #         - cmd: sudo systemctl daemon-reload
+#          - cmd: sudo systemctl start continuous
+          - stop: true
   updateDB: &updateDB
     - cmd: touch ${workDir}/mha/db/migration/config.env
     - cmd: |
