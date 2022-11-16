@@ -25,7 +25,7 @@ func BashCommand(command string) string {
 	}
 	outputString = strings.TrimSpace(outputString)
 	outputString = strings.Trim(outputString, "\n")
-	cuppago.LogFile("CMD", command, outputString)
+	cuppago.LogFile("CMD: "+command, "-- output: "+outputString)
 	return outputString
 }
 
@@ -48,5 +48,6 @@ func Command(app string, args []string, workingDirectory string) string {
 	outputString = strings.TrimSpace(outputString)
 	outputString = strings.Trim(outputString, "\n")
 	cuppago.LogFile("CMD:", app, args, workingDirectory, outputString)
+	cuppago.LogFile("CMD: "+app+" ", "-- args: ", args, "-- output: "+outputString)
 	return outputString
 }
