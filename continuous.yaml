@@ -54,6 +54,7 @@ jobs:
                        DB_USER = ${databaseUser}
                        DB_PASSWORD = ${databasePass}
                        FILES_PATH = sqlFiles/
+                       EXIT = true
                        FILES_SORT = UPDATE_DATE_ASC
                       ' > ${workDir}/mha/db/migration/config.env
                   - cmd: ${workDir}/mha/db/migration/migration-mac-amd64
