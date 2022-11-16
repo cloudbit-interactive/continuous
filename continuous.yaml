@@ -14,7 +14,7 @@ vars:
   migrationFile: migration-mac-amd64
 jobs:
   - createService:
-    - cmd: ${serviceDir}
+    - cmd: mkdir ${serviceDir}
     - cmd: if [ -f ${serviceDir}/continuous.service ] ; then echo 1 ; else echo 0 ; fi
     - if:
         type: equal
