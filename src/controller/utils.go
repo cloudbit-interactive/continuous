@@ -27,10 +27,12 @@ func ReplaceString(string string) string {
 func ReplaceToSystemValue(string string) string {
 	cuppago.Log("ReplaceToSystemValue", string)
 	os := runtime.GOOS
+	arch := runtime.GOARCH
 	date := time.Now().String()
 	string = cuppago.ReplaceNotCase(string, "\\${DATE}", date[0:10])
 	string = cuppago.ReplaceNotCase(string, "\\${DATETIME}", date[0:19])
 	string = cuppago.ReplaceNotCase(string, "\\${OS}", os)
+	string = cuppago.ReplaceNotCase(string, "\\${ARCH}", arch)
 	return string
 }
 
