@@ -73,7 +73,6 @@ func YamlCommand(command interface{}) string {
 		dir := "./"
 		if cmd["workingDirectory"] != nil {
 			dir = cmd["workingDirectory"].(string)
-			dir = ReplaceString(dir)
 		}
 		argsSeparator := " "
 		if cmd["argsSeparator"] != nil {

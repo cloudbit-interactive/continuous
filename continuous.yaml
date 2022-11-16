@@ -6,7 +6,7 @@ vars:
   port: 4000
   databaseHost: localhost
   databasePort: 3306
-  databaseName: mha
+  databaseName: mha_test
   databaseUser: root
   databasePass: root
   workDir: /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous
@@ -14,6 +14,7 @@ vars:
   migrationFile: migration-mac-amd64
 jobs:
   - createService:
+    - cmd: ${serviceDir}
     - cmd: if [ -f ${serviceDir}/continuous.service ] ; then echo 1 ; else echo 0 ; fi
     - if:
         type: equal
@@ -41,7 +42,7 @@ jobs:
         jobs:
           - cmd: git -C ${workDir}/mha pull
           - if:
-              type: contain
+              type: contain!
               value: Already up to date
               jobs:
                 - updateDB:
@@ -64,18 +65,29 @@ jobs:
                       args: "i"
                       workingDir: "${workDir}/mha/server/"
                   - cmd: touch ${workDir}/mha/server/config.js
-#                  - cmd: |
-#                      echo '
-#                       export const config = {
-#                          version:'0.0.1',
-#                          environment:'L',
-#                          domain:'localhost',
-#                          port:4000,
-#                          databaseHost:'${databaseHost}',
-#                          databasePort:'${databasePort}',
-#                          databaseName:'${databaseName}',
-#                          databaseUser:'${databaseUser}',
-#                          databasePass:'${databasePass}',
-#                        }
-#                      ' > ${workDir}/mha/server/config.js
-                  - cmd: echo HEY
+                  - cmd: |
+                      echo '
+                       export const config = {
+                          version:"0.0.1",
+                          environment:"L",
+                          domain:"localhost",
+                          port:4000,
+                          databaseHost:"${databaseHost}",
+                          databasePort:"${databasePort}",
+                          databaseName:"${databaseName}",
+                          databaseUser:"${databaseUser}",
+                          databasePass:"${databasePass}",
+                        }
+                      ' > ${workDir}/mha/server/config.js
+                  - cmd:
+                      app: npm
+                      args: install
+                      workingDirectory: ${workDir}/mha/server
+                  - cmd:
+                      app: npm
+                      args: run stop
+                      workingDirectory: ${workDir}/mha/server
+                  - cmd:
+                      app: npm
+                      args: run server
+                      workingDirectory: ${workDir}/mha/server

@@ -33,6 +33,7 @@ func Command(app string, args []string, workingDirectory string) string {
 	for i := 0; i < len(args); i++ {
 		args[i] = strings.TrimSpace(ReplaceString(args[i]))
 	}
+	workingDirectory = strings.TrimSpace(ReplaceString(workingDirectory))
 	var output bytes.Buffer
 	cmd := exec.Command(app, args...)
 	cmd.Dir = workingDirectory
@@ -46,6 +47,6 @@ func Command(app string, args []string, workingDirectory string) string {
 	}
 	outputString = strings.TrimSpace(outputString)
 	outputString = strings.Trim(outputString, "\n")
-	cuppago.LogFile("CMD:", app, args, outputString)
+	cuppago.LogFile("CMD:", app, args, workingDirectory, outputString)
 	return outputString
 }
