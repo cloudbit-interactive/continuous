@@ -44,6 +44,7 @@ func YamlProcessJobs(jobs []interface{}) {
 
 func YamlJob(job map[string]interface{}) {
 	for key := range job {
+		cuppago.LogFile("JOB -----> " + key)
 		if key == CMD {
 			output := YamlCommand(job[CMD])
 			YamlOutput = append(YamlOutput, output)
