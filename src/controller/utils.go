@@ -4,13 +4,33 @@ import (
 	"bytes"
 	"github.com/cloudbit-interactive/cuppago"
 	"os/exec"
+	"runtime"
 	"strings"
+	"time"
 )
+
+func ReplaceVariables(values map[string]interface{}) map[string]interface{} {
+	for key := range values {
+		values[key] = ReplaceToSystemValue(cuppago.String(values[key]))
+	}
+	return values
+}
 
 func ReplaceString(string string) string {
 	for key := range YamlVars {
 		string = cuppago.ReplaceNotCase(string, "\\${"+key+"}", cuppago.String(YamlVars[key]))
 	}
+	string = ReplaceToSystemValue(string)
+	return string
+}
+
+func ReplaceToSystemValue(string string) string {
+	cuppago.Log("ReplaceToSystemValue", string)
+	os := runtime.GOOS
+	date := time.Now().String()
+	string = cuppago.ReplaceNotCase(string, "\\${DATE}", date[0:10])
+	string = cuppago.ReplaceNotCase(string, "\\${DATETIME}", date[0:19])
+	string = cuppago.ReplaceNotCase(string, "\\${OS}", os)
 	return string
 }
 
@@ -54,7 +74,7 @@ func Command(app string, args []string, workingDirectory string) string {
 }
 
 func Log(values ...interface{}) {
-	if YamlData["log"] == false {
+	if YamlData["log"] != true {
 		return
 	}
 	cuppago.LogFile(values...)

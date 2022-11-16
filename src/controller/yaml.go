@@ -22,13 +22,13 @@ func ProcessYamlString(yamlString string) {
 		cuppago.Error(err)
 	}
 	YamlData = yamlData
-	YamlVars = yamlData["vars"].(map[string]interface{})
+	YamlVars = ReplaceVariables(yamlData["vars"].(map[string]interface{}))
 	jobs := YamlData["jobs"].([]interface{})
 	if jobs == nil {
 		Log("No jobs founds")
 		return
 	}
-	Log("Continuous running, press [Enter] to exit...")
+	cuppago.LogFile("Process running, press [Enter] to exit...")
 	YamlProcessJobs(jobs)
 	bufio.NewReader(os.Stdin).ReadBytes('\n')
 }
@@ -42,7 +42,9 @@ func YamlProcessJobs(jobs []interface{}) {
 func YamlJob(job map[string]interface{}) {
 	for key := range job {
 		Log("JOB -----> " + key)
-		if key == CMD {
+		if key == Echo {
+			YamlEcho(cuppago.String(job[Echo]))
+		} else if key == CMD {
 			output := YamlCommand(job[CMD])
 			YamlOutput = append(YamlOutput, output)
 		} else if key == If {
@@ -113,4 +115,9 @@ func YamlLoop(data map[string]interface{}) {
 	time.Sleep(sleepTime)
 	YamlProcessJobs(jobs)
 	YamlLoop(data)
+}
+
+func YamlEcho(value string) {
+	value = ReplaceString(value)
+	cuppago.LogFile(value)
 }

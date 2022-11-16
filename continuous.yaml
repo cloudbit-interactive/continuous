@@ -1,6 +1,5 @@
 name: nameApp
 version: 0.0.1
-log: true
 vars:
   domain: localhost
   port: 4000
@@ -14,6 +13,7 @@ vars:
   migrationFile: migration-mac-amd64
 tasks:
   createService: &createService
+    - echo: ${DATETIME} - createService
     - cmd: mkdir ${serviceDir}
     - cmd: if [ -f ${serviceDir}/continuous.service ] ; then echo 1 ; else echo 0 ; fi
     - if:
@@ -39,6 +39,7 @@ tasks:
 #          - cmd: sudo systemctl start continuous
           - stop: true
   updateDB: &updateDB
+    - echo: ${DATETIME} - updateDB
     - cmd: touch ${workDir}/mha/db/migration/config.env
     - cmd: |
         echo '
@@ -51,8 +52,9 @@ tasks:
          EXIT = true
          FILES_SORT = UPDATE_DATE_ASC
         ' > ${workDir}/mha/db/migration/config.env
-    - cmd: ${workDir}/mha/db/migration/${migrationFile}
+    - cmd: ${workDir}/mha/db/migration/migration-${OS}-amd64
   updateServer: &updateServer
+    - echo: ${DATETIME} - updateServer
     - cmd:
         app: npm
         args: "i"
@@ -87,17 +89,21 @@ tasks:
 jobs:
   - createService: *createService
   - cloneRepo:
+      - echo: ${DATETIME} - cloneRepo
       - cmd: git clone -b master https://tufik_chediak:ATBBfTrSHKGTHDQMNwWBLsYBVAnaC774C627@bitbucket.org/refinedrisk/risk-mental-health-app.git ${workDir}/mha
       - updateDB: *updateDB
       - updateServer: *updateServer
   - checkUpdates:
+      - echo: ${DATETIME} - checkUpdates
       - loop:
           sleepTime: 10000
+          log: false
           jobs:
             - cmd: git -C ${workDir}/mha pull
             - if:
                 type: contain!
                 value: Already up to date
+                log: false
                 jobs:
                   - updateDB: *updateDB
                   - updateServer: *updateServer

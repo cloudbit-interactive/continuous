@@ -2,6 +2,7 @@ package controller
 
 const (
 	CMD        = "cmd"
+	Echo       = "echo"
 	If         = "if"
 	Equal      = "equal"
 	NotEqual   = "equal!"
