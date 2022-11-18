@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/cloudbit-interactive/cuppago"
 	"gopkg.in/yaml.v3"
+	"net/http"
 	"os"
 	"strings"
 	"time"
@@ -28,9 +29,17 @@ func ProcessYamlString(yamlString string) {
 		Log("No jobs founds")
 		return
 	}
-	cuppago.LogFile("Process running, press [Enter] to exit...")
-	YamlProcessJobs(jobs)
-	bufio.NewReader(os.Stdin).ReadBytes('\n')
+	if yamlData["port"] != nil {
+		port := cuppago.String(yamlData["port"])
+		cuppago.Log("Continuous running in http://localhost:" + port)
+		YamlProcessJobs(jobs)
+		http.Handle("/favicon.ico", http.NotFoundHandler())
+		http.ListenAndServe(":"+port, nil)
+	} else {
+		cuppago.LogFile("Process running, press [Enter] to exit...")
+		YamlProcessJobs(jobs)
+		bufio.NewReader(os.Stdin).ReadBytes('\n')
+	}
 }
 
 func YamlProcessJobs(jobs []interface{}) {
@@ -43,7 +52,8 @@ func YamlJob(job map[string]interface{}) {
 	for key := range job {
 		Log("JOB -----> " + key)
 		if key == Echo {
-			YamlEcho(cuppago.String(job[Echo]))
+			output := YamlEcho(cuppago.String(job[Echo]))
+			YamlOutput = append(YamlOutput, output)
 		} else if key == CMD {
 			output := YamlCommand(job[CMD])
 			YamlOutput = append(YamlOutput, output)
@@ -117,7 +127,8 @@ func YamlLoop(data map[string]interface{}) {
 	YamlLoop(data)
 }
 
-func YamlEcho(value string) {
+func YamlEcho(value string) string {
 	value = ReplaceString(value)
 	cuppago.LogFile(value)
+	return value
 }
