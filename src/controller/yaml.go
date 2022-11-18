@@ -1,7 +1,6 @@
 package controller
 
 import (
-	"bufio"
 	"fmt"
 	"github.com/cloudbit-interactive/cuppago"
 	"gopkg.in/yaml.v3"
@@ -31,14 +30,16 @@ func ProcessYamlString(yamlString string) {
 	}
 	if yamlData["port"] != nil {
 		port := cuppago.String(yamlData["port"])
-		cuppago.Log("Continuous running in http://localhost:" + port)
+		cuppago.LogFile("Continuous running in http://localhost:" + port)
 		YamlProcessJobs(jobs)
 		http.Handle("/favicon.ico", http.NotFoundHandler())
 		http.ListenAndServe(":"+port, nil)
 	} else {
 		cuppago.LogFile("Process running, press [Enter] to exit...")
 		YamlProcessJobs(jobs)
-		bufio.NewReader(os.Stdin).ReadBytes('\n')
+		for {
+			time.Sleep(time.Duration(1<<63 - 1))
+		}
 	}
 }
 
