@@ -4,7 +4,6 @@ import (
 	"app/src/controller"
 	_ "app/src/router"
 	"flag"
-	"github.com/cloudbit-interactive/cuppago"
 	"log"
 )
 
@@ -13,7 +12,7 @@ func main() {
 	file := flag.String("file", "", " Path to yaml file")
 	flag.Parse()
 	if *file == "" {
-		*file = cuppago.GetRootPath() + "/continuous.yaml"
+		*file = controller.AutoGetFile()
 	}
 	text := controller.GetFileContent(*file)
 	controller.ProcessYamlString(text)
