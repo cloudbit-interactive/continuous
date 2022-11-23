@@ -9,6 +9,7 @@ vars:
 tasks:
   updateServer: &updateServer
     - echo: ${DATETIME} - updateServer
+    - cmd: kill -9 $(lsof -t -i:${port})
     - cmd:
         app: killall
         args: node
