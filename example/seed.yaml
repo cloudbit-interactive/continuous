@@ -2,6 +2,7 @@ name: nameApp
 version: 0.0.1
 log: false
 vars:
+  branch: main
   name: Test App
   environment: staging
   port: 4000
@@ -30,7 +31,7 @@ tasks:
 jobs:
   - cloneRepo:
       - echo: ${DATETIME} - cloneRepo
-      - cmd: git clone -b main https://github.com/cloudbit-interactive/continuous-seed-test.git ${projectDir}/continuous-seed-test
+      - cmd: git clone -b ${branch} https://github.com/cloudbit-interactive/continuous-seed-test.git ${projectDir}/continuous-seed-test
       - updateServer: *updateServer
   - checkUpdates:
       - echo: ${DATETIME} - checkUpdates
