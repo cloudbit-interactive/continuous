@@ -6,6 +6,7 @@ import (
 	"gopkg.in/yaml.v3"
 	"net/http"
 	"os"
+	"reflect"
 	"strings"
 	"time"
 )
@@ -14,7 +15,7 @@ var YamlData map[string]interface{}
 var YamlVars map[string]interface{}
 var YamlOutput []string
 
-func ProcessYamlString(yamlString string) {
+func ProcessYamlString(yamlString string, yamlVarsPath string) {
 	YamlOutput = []string{}
 	yamlData := make(map[string]interface{})
 	err := yaml.Unmarshal([]byte(yamlString), yamlData)
@@ -22,7 +23,13 @@ func ProcessYamlString(yamlString string) {
 		cuppago.Error(err)
 	}
 	YamlData = yamlData
-	YamlVars = ReplaceVariables(yamlData["vars"].(map[string]interface{}))
+
+	if yamlVarsPath != "" {
+		YamlProcessVars(yamlVarsPath)
+	} else {
+		YamlProcessVars(yamlData["vars"])
+	}
+
 	jobs := YamlData["jobs"].([]interface{})
 	if jobs == nil {
 		Log("No jobs founds")
@@ -40,6 +47,21 @@ func ProcessYamlString(yamlString string) {
 		for {
 			time.Sleep(time.Duration(1<<63 - 1))
 		}
+	}
+}
+
+func YamlProcessVars(vars interface{}) {
+	if reflect.TypeOf(vars).String() == "string" {
+		filePath := cuppago.GetRootPath() + "/" + vars.(string)
+		text := GetFileContent(filePath)
+		yamlData := make(map[string]interface{})
+		err := yaml.Unmarshal([]byte(text), yamlData)
+		if err != nil {
+			cuppago.Error(err)
+		}
+		YamlVars = ReplaceVariables(yamlData)
+	} else {
+		YamlVars = ReplaceVariables(vars.(map[string]interface{}))
 	}
 }
 

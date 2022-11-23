@@ -1,11 +1,7 @@
 name: nameApp
 version: 0.0.1
 log: false
-vars:
-  name: Test App
-  environment: staging
-  port: 4000
-  projectDir: /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous-seed/example
+vars: seed-vars.yaml
 tasks:
   updateServer: &updateServer
     - echo: ${DATETIME} - updateServer
@@ -15,7 +11,7 @@ tasks:
           export const config = {
             name:"${name}",
             environment:"${environment}",
-            port:${port}
+            port:${port},
           }
         ' > ${projectDir}/continuous-seed-test/config.js
     - cmd:

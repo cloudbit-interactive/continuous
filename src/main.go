@@ -4,16 +4,18 @@ import (
 	"app/src/controller"
 	_ "app/src/router"
 	"flag"
+	"github.com/cloudbit-interactive/cuppago"
 	"log"
 )
 
 func main() {
 	log.SetFlags(0)
-	file := flag.String("file", "", " Path to yaml file")
+	filePath := flag.String("f", "", "Path to yaml file")
+	varsPath := flag.String("v", "", "Path to yaml variables file")
 	flag.Parse()
-	if *file == "" {
-		*file = controller.AutoGetFile()
+	if *filePath == "" {
+		*filePath = cuppago.GetRootPath() + "/seed.yaml"
 	}
-	text := controller.GetFileContent(*file)
-	controller.ProcessYamlString(text)
+	text := controller.GetFileContent(*filePath)
+	controller.ProcessYamlString(text, *varsPath)
 }

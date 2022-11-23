@@ -1,0 +1,5 @@
+name: Test App
+environment: staging
+port: 4000
+projectDir: /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous-seed/example
+os: ${OS}
