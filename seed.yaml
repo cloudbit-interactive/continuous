@@ -1,6 +1,6 @@
 name: nameApp
 version: 0.0.1
-log: true
+log: false
 vars:
   name: Test App
   environment: staging
@@ -27,6 +27,7 @@ tasks:
         app: npm
         args: start
         workingDirectory: ${projectDir}/continuous-seed-test/
+        background: true
 jobs:
   - cloneRepo:
       - echo: ${DATETIME} - cloneRepo
@@ -37,7 +38,8 @@ jobs:
       - loop:
           sleepTime: 5000
           jobs:
-            - cmd: git -C ${workDir}/continuous-seed-test pull
+            - cmd: git -C ${projectDir}/continuous-seed-test pull
+            - echo: ${OUTPUT}
             - if:
                 type: contain!
                 value: Already up to date

@@ -56,6 +56,7 @@ func YamlJob(job map[string]interface{}) {
 			output := YamlEcho(cuppago.String(job[Echo]))
 			YamlOutput = append(YamlOutput, output)
 		} else if key == CMD {
+
 			output := YamlCommand(job[CMD])
 			YamlOutput = append(YamlOutput, output)
 		} else if key == If {
@@ -90,7 +91,13 @@ func YamlCommand(command interface{}) string {
 			argsSeparator = cmd["argsSeparator"].(string)
 		}
 		args := strings.Split(cmd["args"].(string), argsSeparator)
-		output := Command(cmd["app"].(string), args, dir)
+		var output string
+		if cmd["background"] == true {
+			go Command(cmd["app"].(string), args, dir)
+			output = "BACKGROUND"
+		} else {
+			output = Command(cmd["app"].(string), args, dir)
+		}
 		YamlOutput = append(YamlOutput, output)
 		return output
 	}
