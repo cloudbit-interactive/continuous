@@ -38,6 +38,7 @@ jobs:
       - loop:
           sleepTime: 5000
           jobs:
+            - cmd: git -C ${projectDir}/continuous-seed-test reset --hard
             - cmd: git -C ${projectDir}/continuous-seed-test pull
             - echo: ${OUTPUT}
             - if:
