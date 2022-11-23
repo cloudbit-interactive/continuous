@@ -9,8 +9,9 @@ vars:
 tasks:
   updateServer: &updateServer
     - echo: ${DATETIME} - updateServer
-    - cmd: lsof -i :${port} -t
-    - cmd: kill ${OUTPUT}
+    - cmd:
+        app: killall
+        args: node
     - cmd: |
         echo '
           export const config = {
@@ -24,8 +25,8 @@ tasks:
         args: install
         workingDirectory: ${projectDir}/continuous-seed-test/
     - cmd:
-        app: npm
-        args: start
+        app: node
+        args: ${projectDir}/continuous-seed-test/src/index.js &> log.log
         workingDirectory: ${projectDir}/continuous-seed-test/
         background: true
 jobs:
@@ -46,4 +47,3 @@ jobs:
                 value: Already up to date
                 jobs:
                   - updateServer: *updateServer
-                    
