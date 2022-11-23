@@ -9,8 +9,7 @@ vars:
 tasks:
   updateServer: &updateServer
     - echo: ${DATETIME} - updateServer
-    - cmd: lsof -i :${port} -t
-    - cmd: kill ${OUTPUT}
+    - cmd: kill -9 $(lsof -t -i tcp:${port})
     - cmd: |
         echo '
           export const config = {
@@ -40,7 +39,6 @@ jobs:
           jobs:
             - cmd: git -C ${projectDir}/continuous-seed-test reset --hard
             - cmd: git -C ${projectDir}/continuous-seed-test pull
-            - echo: ${OUTPUT}
             - if:
                 type: contain!
                 value: Already up to date

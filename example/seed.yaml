@@ -9,10 +9,7 @@ vars:
 tasks:
   updateServer: &updateServer
     - echo: ${DATETIME} - updateServer
-    - cmd: kill -9 $(lsof -t -i:${port})
-    - cmd:
-        app: killall
-        args: node
+    - cmd: kill -9 $(lsof -t -i tcp:${port})
     - cmd: |
         echo '
           export const config = {
@@ -26,8 +23,8 @@ tasks:
         args: install
         workingDirectory: ${projectDir}/continuous-seed-test/
     - cmd:
-        app: node
-        args: ${projectDir}/continuous-seed-test/src/index.js &> log.log
+        app: npm
+        args: start
         workingDirectory: ${projectDir}/continuous-seed-test/
         background: true
 jobs:
@@ -42,7 +39,6 @@ jobs:
           jobs:
             - cmd: git -C ${projectDir}/continuous-seed-test reset --hard
             - cmd: git -C ${projectDir}/continuous-seed-test pull
-            - echo: ${OUTPUT}
             - if:
                 type: contain!
                 value: Already up to date
