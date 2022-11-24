@@ -1,8 +1,9 @@
 # Continuous Seed
-Light tool for continuous delivery CI/CD without dependencies.
-
 <p align="center">
-  <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/tree.jpeg?raw=true" height="150" title="hover text">
+  <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/seed.png?raw=true" height="100" title="hover text">
+</p>
+<p align="center">
+Light tool for continuous delivery CI/CD without extra dependencies.
 </p>
 
 # Generate Binaries
