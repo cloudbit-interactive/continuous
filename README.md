@@ -1,5 +1,9 @@
 # Continuous Seed
-Light Tool for continuous delivery CI/CD without no dependencies.
+Light tool for continuous delivery CI/CD without dependencies.
+
+<p align="center">
+  <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/tree.jpeg?raw=true" height="150" title="hover text">
+</p>
 
 # Generate Binaries
 ```
@@ -9,5 +13,3 @@ GOOS=darwin GOARCH=amd64 go build -ldflags="-w -s" -o bin/seed-mac-amd64 src/mai
 GOOS=darwin GOARCH=arm64 go build -ldflags="-w -s" -o bin/seed-mac-arm64 src/main.go;
 lipo -create -output bin/seed-mac_universal bin/seed-mac-amd64 bin/seed-mac-arm64;
 ```
-
-
