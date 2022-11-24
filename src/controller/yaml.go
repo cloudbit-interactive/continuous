@@ -108,11 +108,11 @@ func YamlCommand(command interface{}) string {
 		if cmd["workingDirectory"] != nil {
 			dir = cmd["workingDirectory"].(string)
 		}
-		argsSeparator := " "
-		if cmd["argsSeparator"] != nil {
-			argsSeparator = cmd["argsSeparator"].(string)
+		separator := " "
+		if cmd["separator"] != nil {
+			separator = cmd["separator"].(string)
 		}
-		args := strings.Split(cmd["args"].(string), argsSeparator)
+		args := strings.Split(cmd["args"].(string), separator)
 		var output string
 		if cmd["background"] == true {
 			go Command(cmd["app"].(string), args, dir)
