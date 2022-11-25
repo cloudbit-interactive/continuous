@@ -60,7 +60,7 @@ func BashCommand(command string) string {
 	return outputString
 }
 
-func Command(app string, args []string, workingDirectory string) string {
+func Command(app string, args []string, workingDirectory string, backgroundName string) string {
 	for i := 0; i < len(args); i++ {
 		args[i] = strings.TrimSpace(ReplaceString(args[i]))
 	}
@@ -68,6 +68,9 @@ func Command(app string, args []string, workingDirectory string) string {
 	Log("-- CMD: "+app, "-- args: ", args, "-- workingDirectory: "+workingDirectory)
 	var output bytes.Buffer
 	cmd := exec.Command(app, args...)
+	if backgroundName != "" {
+		YamlBackgrounds[backgroundName] = cmd
+	}
 	cmd.Dir = workingDirectory
 	cmd.Stdout = &output
 	err := cmd.Run()

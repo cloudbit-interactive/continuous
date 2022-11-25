@@ -15,11 +15,13 @@ import (
 
 var YamlData map[string]interface{}
 var YamlVars map[string]interface{}
+var YamlBackgrounds map[string]interface{}
 var YamlOutput []string
 
 func ProcessYamlString(yamlString string, yamlVarsPath string) {
 	YamlOutput = []string{}
 	yamlData := make(map[string]interface{})
+	YamlBackgrounds = make(map[string]interface{})
 	err := yaml.Unmarshal([]byte(yamlString), yamlData)
 	if err != nil {
 		cuppago.Error(err)
@@ -118,11 +120,23 @@ func YamlCommand(command interface{}) string {
 		}
 		args := strings.Split(cmd["args"].(string), separator)
 		var output string
-		if cmd["background"] == true {
-			go Command(cmd["app"].(string), args, dir)
-			output = "BACKGROUND"
+		if cmd["background"] != nil {
+			if cmd["background"] == true {
+				go Command(cmd["app"].(string), args, dir, "")
+				output = "BACKGROUND"
+			} else {
+				/*
+					go Command(cmd["app"].(string), args, dir, cmd["background"].(string))
+					time.Sleep(5 * time.Second)
+					com2 := YamlBackgrounds[cmd["background"].(string)].(*exec.Cmd)
+					cuppago.Log("CON", com2)
+					if err := com2.Process.Kill(); err != nil {
+						cuppago.Log("ERROR", err)
+					}
+				*/
+			}
 		} else {
-			output = Command(cmd["app"].(string), args, dir)
+			output = Command(cmd["app"].(string), args, dir, "")
 		}
 		YamlOutput = append(YamlOutput, output)
 		return output
@@ -174,7 +188,6 @@ func YamlCreateFile(data map[string]interface{}) string {
 	dirString := strings.Join(dirArray, "/")
 
 	if err := os.MkdirAll(dirString, os.ModePerm); err != nil {
-
 	}
 
 	f, err := os.Create(file)

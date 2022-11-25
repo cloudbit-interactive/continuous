@@ -10,12 +10,6 @@ vars:
 tasks:
   configServer: &configServer
     - echo: ${DATETIME} - configServer
-    - cmd:
-        app: npm
-        args: install --global kill-port
-    - cmd:
-        app: kill-port
-        args: --port ${port}
     - create-file: 
         file: ${projectDir}/continuous-seed-test/config.js
         content: |
@@ -32,7 +26,7 @@ tasks:
         app: npm
         args: start
         workingDirectory: ${projectDir}/continuous-seed-test/
-        background: true
+        background: mhaProcess
 jobs:
   - cloneRepo:
       - echo: ${DATETIME} - cloneRepo
@@ -43,7 +37,7 @@ jobs:
   - checkUpdates:
       - echo: ${DATETIME} - checkUpdates
       - loop:
-          sleepTime: 10000
+          sleepTime: 5000
           jobs:
             - cmd: 
                 app: git 
