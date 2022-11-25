@@ -6,7 +6,7 @@ vars:
   environment: staging
   port: 4000
   branch: main
-  projectDir: C:/tufik/server/projects/cloudbit/repositories/continuous-seed/example
+  projectDir: /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous-seed/example
 tasks:
   configServer: &configServer
     - echo: ${DATETIME} - configServer
