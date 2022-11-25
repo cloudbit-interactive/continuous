@@ -2,13 +2,15 @@ package controller
 
 import (
 	"fmt"
-	"github.com/cloudbit-interactive/cuppago"
-	"gopkg.in/yaml.v3"
+	"log"
 	"net/http"
 	"os"
 	"reflect"
 	"strings"
 	"time"
+
+	"github.com/cloudbit-interactive/cuppago"
+	"gopkg.in/yaml.v3"
 )
 
 var YamlData map[string]interface{}
@@ -74,11 +76,13 @@ func YamlProcessJobs(jobs []interface{}) {
 func YamlJob(job map[string]interface{}) {
 	for key := range job {
 		Log("JOB -----> " + key)
-		if key == Echo {
+		if key == CrateFile {
+			output := YamlCreateFile(job[CrateFile].(map[string]interface{}))
+			YamlOutput = append(YamlOutput, output)
+		} else if key == Echo {
 			output := YamlEcho(cuppago.String(job[Echo]))
 			YamlOutput = append(YamlOutput, output)
 		} else if key == CMD {
-
 			output := YamlCommand(job[CMD])
 			YamlOutput = append(YamlOutput, output)
 		} else if key == If {
@@ -161,4 +165,31 @@ func YamlEcho(value string) string {
 	value = ReplaceString(value)
 	cuppago.LogFile(value)
 	return value
+}
+
+func YamlCreateFile(data map[string]interface{}) string {
+	file := strings.TrimSpace(ReplaceString(data["file"].(string)))
+	dirArray := strings.Split(file, "/")
+	dirArray = dirArray[0 : len(dirArray)-1]
+	dirString := strings.Join(dirArray, "/")
+
+	if err := os.MkdirAll(dirString, os.ModePerm); err != nil {
+
+	}
+
+	f, err := os.Create(file)
+	if err != nil {
+		log.Fatal(err)
+	}
+	Log("-- File: " + file)
+
+	if data["content"] == nil {
+		return file
+	}
+	content := strings.TrimSpace(ReplaceString(data["content"].(string)))
+	_, err2 := f.WriteString(content)
+	if err2 != nil {
+		log.Fatal(err2)
+	}
+	return file
 }

@@ -1,0 +1,58 @@
+name: nameApp
+version: 0.0.1
+log: false
+vars:
+  name: Test App
+  environment: staging
+  port: 4000
+  branch: main
+  projectDir: C:/tufik/server/projects/cloudbit/repositories/continuous-seed/example
+tasks:
+  configServer: &configServer
+    - echo: ${DATETIME} - configServer
+    - cmd:
+        app: npm
+        args: install --global kill-port
+    - cmd:
+        app: kill-port
+        args: --port ${port}
+    - create-file: 
+        file: ${projectDir}/continuous-seed-test/config.js
+        content: |
+          export const config = {
+              name:"${name}",
+              environment:"${environment}",
+              port:${port}
+          }
+    - cmd:
+        app: npm
+        args: install
+        workingDirectory: ${projectDir}/continuous-seed-test/
+    - cmd:
+        app: npm
+        args: start
+        workingDirectory: ${projectDir}/continuous-seed-test/
+        background: true
+jobs:
+  - cloneRepo:
+      - echo: ${DATETIME} - cloneRepo
+      - cmd: 
+          app: git 
+          args: clone -b ${branch} https://github.com/cloudbit-interactive/continuous-seed-test.git ${projectDir}/continuous-seed-test
+      - configServer: *configServer
+  - checkUpdates:
+      - echo: ${DATETIME} - checkUpdates
+      - loop:
+          sleepTime: 10000
+          jobs:
+            - cmd: 
+                app: git 
+                args: -C ${projectDir}/continuous-seed-test reset --hard
+            - cmd: 
+                app: git
+                args: -C ${projectDir}/continuous-seed-test pull
+            - if:
+                type: contain!
+                value: Already up to date
+                jobs:
+                  - configServer: *configServer

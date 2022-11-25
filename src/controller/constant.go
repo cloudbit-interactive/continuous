@@ -10,4 +10,5 @@ const (
 	NotContain = "contain!"
 	Stop       = "stop"
 	Loop       = "loop"
+	CrateFile  = "create-file"
 )
