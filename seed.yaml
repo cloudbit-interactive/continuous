@@ -10,7 +10,8 @@ vars:
 tasks:
   configServer: &configServer
     - echo: ${DATETIME} - configServer
-    - create-file: 
+    - kill-port: ${port}
+    - create-file:
         file: ${projectDir}/continuous-seed-test/config.js
         content: |
           export const config = {
@@ -39,10 +40,10 @@ jobs:
       - loop:
           sleepTime: 5000
           jobs:
-            - cmd: 
-                app: git 
+            - cmd:
+                app: git
                 args: -C ${projectDir}/continuous-seed-test reset --hard
-            - cmd: 
+            - cmd:
                 app: git
                 args: -C ${projectDir}/continuous-seed-test pull
             - if:

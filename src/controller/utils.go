@@ -92,3 +92,24 @@ func Log(values ...interface{}) {
 	}
 	cuppago.LogFile(values...)
 }
+
+func KillPorts(port string) string {
+	ports := strings.Split(port, ",")
+	output := ""
+	for _, value := range ports {
+		output = KillPort(value)
+	}
+	return output
+}
+
+func KillPort(port string) string {
+	port = strings.TrimSpace(port)
+	output := ""
+	if runtime.GOOS == "windows" {
+		args := []string{"-Id", fmt.Sprintf("(Get-NetTCPConnection -LocalPort %s).OwningProcess -Force", port)}
+		output = Command("Stop-Process", args, "", "")
+	} else {
+		output = BashCommand("kill -9 $(lsof -t -i tcp:" + port + ")")
+	}
+	return output
+}

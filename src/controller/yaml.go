@@ -2,7 +2,6 @@ package controller
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"reflect"
@@ -78,8 +77,25 @@ func YamlProcessJobs(jobs []interface{}) {
 func YamlJob(job map[string]interface{}) {
 	for key := range job {
 		Log("JOB -----> " + key)
-		if key == CrateFile {
-			output := YamlCreateFile(job[CrateFile].(map[string]interface{}))
+		if key == CreateFileConst {
+			output := YamlCreateFile(job[CreateFileConst].(map[string]interface{}))
+			YamlOutput = append(YamlOutput, output)
+		} else if key == CreateFolder {
+			output := CreateDir(ReplaceString(job[CreateFolder].(string)))
+			YamlOutput = append(YamlOutput, output)
+		} else if key == KillPortConst {
+			ports := job[KillPortConst]
+			if cuppago.Type(ports) == "int" {
+				ports = cuppago.String(ports)
+			}
+			output := KillPorts(ReplaceString(ports.(string)))
+			YamlOutput = append(YamlOutput, output)
+		} else if key == Delete {
+			output := DeletePath(ReplaceString(job[Delete].(string)))
+			YamlOutput = append(YamlOutput, output)
+		} else if key == Move {
+			conf := job[Move].(map[string]interface{})
+			output := MovePath(ReplaceString(conf["from"].(string)), ReplaceString(conf["to"].(string)))
 			YamlOutput = append(YamlOutput, output)
 		} else if key == Echo {
 			output := YamlEcho(cuppago.String(job[Echo]))
@@ -121,20 +137,8 @@ func YamlCommand(command interface{}) string {
 		args := strings.Split(cmd["args"].(string), separator)
 		var output string
 		if cmd["background"] != nil {
-			if cmd["background"] == true {
-				go Command(cmd["app"].(string), args, dir, "")
-				output = "BACKGROUND"
-			} else {
-				/*
-					go Command(cmd["app"].(string), args, dir, cmd["background"].(string))
-					time.Sleep(5 * time.Second)
-					com2 := YamlBackgrounds[cmd["background"].(string)].(*exec.Cmd)
-					cuppago.Log("CON", com2)
-					if err := com2.Process.Kill(); err != nil {
-						cuppago.Log("ERROR", err)
-					}
-				*/
-			}
+			go Command(cmd["app"].(string), args, dir, "")
+			output = "BACKGROUND"
 		} else {
 			output = Command(cmd["app"].(string), args, dir, "")
 		}
@@ -183,26 +187,10 @@ func YamlEcho(value string) string {
 
 func YamlCreateFile(data map[string]interface{}) string {
 	file := strings.TrimSpace(ReplaceString(data["file"].(string)))
-	dirArray := strings.Split(file, "/")
-	dirArray = dirArray[0 : len(dirArray)-1]
-	dirString := strings.Join(dirArray, "/")
-
-	if err := os.MkdirAll(dirString, os.ModePerm); err != nil {
+	content := ""
+	if data["content"] != nil {
+		content = strings.TrimSpace(ReplaceString(data["content"].(string)))
 	}
-
-	f, err := os.Create(file)
-	if err != nil {
-		log.Fatal(err)
-	}
-	Log("-- File: " + file)
-
-	if data["content"] == nil {
-		return file
-	}
-	content := strings.TrimSpace(ReplaceString(data["content"].(string)))
-	_, err2 := f.WriteString(content)
-	if err2 != nil {
-		log.Fatal(err2)
-	}
+	CreateFile(file, content)
 	return file
 }
