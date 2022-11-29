@@ -109,7 +109,8 @@ func KillPort(port string) string {
 		args := []string{"-Id", fmt.Sprintf("(Get-NetTCPConnection -LocalPort %s).OwningProcess -Force", port)}
 		output = Command("Stop-Process", args, "", "")
 	} else {
-		output = BashCommand("kill -9 $(lsof -t -i tcp:" + port + ")")
+		command := fmt.Sprintf("lsof -i tcp:%s | grep LISTEN | awk '{print $2}' | xargs kill -9", port)
+		output = BashCommand(command)
 	}
 	return output
 }
