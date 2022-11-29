@@ -6,7 +6,7 @@ vars:
   environment: staging
   port: 4000
   branch: main
-  projectDir: /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous-seed/example
+  projectDir: C:/tufik/seed
 tasks:
   configServer: &configServer
     - echo: ${DATETIME} - configServer
@@ -31,8 +31,8 @@ tasks:
 jobs:
   - cloneRepo:
       - echo: ${DATETIME} - cloneRepo
-      - cmd: 
-          app: git 
+      - cmd:
+          app: git
           args: clone -b ${branch} https://github.com/cloudbit-interactive/continuous-seed-test.git ${projectDir}/continuous-seed-test
       - configServer: *configServer
   - checkUpdates:
