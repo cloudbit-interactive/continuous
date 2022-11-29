@@ -48,11 +48,21 @@ func BashCommand(command string) string {
 	outputString := ""
 	command = ReplaceString(command)
 	Log("-- CMD: " + command)
-	output, err := exec.Command("bash", "-c", command).Output()
-	if err != nil {
-		outputString = cuppago.String(err)
+
+	if runtime.GOOS == "windows" {
+		output, err := exec.Command("powershell", command).Output()
+		if err != nil {
+			outputString = cuppago.String(err)
+		} else {
+			outputString = string(output)
+		}
 	} else {
-		outputString = string(output)
+		output, err := exec.Command("bash", "-c", command).Output()
+		if err != nil {
+			outputString = cuppago.String(err)
+		} else {
+			outputString = string(output)
+		}
 	}
 	outputString = strings.TrimSpace(outputString)
 	outputString = strings.Trim(outputString, "\n")
@@ -106,8 +116,8 @@ func KillPort(port string) string {
 	port = strings.TrimSpace(port)
 	output := ""
 	if runtime.GOOS == "windows" {
-		args := []string{"-Id", fmt.Sprintf("(Get-NetTCPConnection -LocalPort %s).OwningProcess -Force", port)}
-		output = Command("Stop-Process", args, "", "")
+		args := []string{"Stop-Process", "-Id", fmt.Sprintf("(Get-NetTCPConnection -LocalPort %s).OwningProcess", port)}
+		output = Command("powershell", args, "", "")
 	} else {
 		command := fmt.Sprintf("lsof -i tcp:%s | grep LISTEN | awk '{print $2}' | xargs kill -9", port)
 		output = BashCommand(command)
