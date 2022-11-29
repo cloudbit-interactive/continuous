@@ -32,14 +32,13 @@ func ReplaceToSystemValue(string string) string {
 	}
 	arch := runtime.GOARCH
 	date := time.Now().String()
-	string = cuppago.ReplaceNotCase(string, "\\${DATE}", date[0:10])
-	string = cuppago.ReplaceNotCase(string, "\\${DATETIME}", date[0:19])
-	string = cuppago.ReplaceNotCase(string, "\\${OS}", os)
-	string = cuppago.ReplaceNotCase(string, "\\${ARCH}", arch)
-	string = cuppago.ReplaceNotCase(string, "\\${ARCH}", arch)
+	string = cuppago.ReplaceNotCase(string, "\\${date}", date[0:10])
+	string = cuppago.ReplaceNotCase(string, "\\${datetime}", date[0:19])
+	string = cuppago.ReplaceNotCase(string, "\\${os}", os)
+	string = cuppago.ReplaceNotCase(string, "\\${arch}", arch)
 	if len(YamlOutput) != 0 {
 		output := fmt.Sprint(YamlOutput[len(YamlOutput)-1])
-		string = cuppago.ReplaceNotCase(string, "\\${OUTPUT}", output)
+		string = cuppago.ReplaceNotCase(string, "\\${output}", output)
 	}
 	return string
 }

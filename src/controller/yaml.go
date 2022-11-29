@@ -77,7 +77,10 @@ func YamlProcessJobs(jobs []interface{}) {
 func YamlJob(job map[string]interface{}) {
 	for key := range job {
 		Log("JOB -----> " + key)
-		if key == CreateFileConst {
+		if strings.Contains(key, "var-") == true {
+			name := key[4:]
+			YamlVars[name] = ReplaceString(job[key].(string))
+		} else if key == CreateFileConst {
 			output := YamlCreateFile(job[CreateFileConst].(map[string]interface{}))
 			YamlOutput = append(YamlOutput, output)
 		} else if key == CreateFolder {

@@ -9,7 +9,7 @@ vars:
   projectDir: C:/tufik/seed
 tasks:
   configServer: &configServer
-    - echo: ${DATETIME} - configServer
+    - echo: ${datetime} - configServer
     - kill-port: ${port}
     - create-file:
         file: ${projectDir}/continuous-seed-test/config.js
@@ -30,13 +30,13 @@ tasks:
         background: mhaProcess
 jobs:
   - cloneRepo:
-      - echo: ${DATETIME} - cloneRepo
+      - echo: ${datetime} - cloneRepo
       - cmd:
           app: git
           args: clone -b ${branch} https://github.com/cloudbit-interactive/continuous-seed-test.git ${projectDir}/continuous-seed-test
       - configServer: *configServer
   - checkUpdates:
-      - echo: ${DATETIME} - checkUpdates
+      - echo: ${datetime} - checkUpdates
       - loop:
           sleepTime: 5000
           jobs:
