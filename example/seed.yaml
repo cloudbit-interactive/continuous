@@ -9,16 +9,16 @@ vars:
   projectDir: /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous-seed/example
 tasks:
   configServer: &configServer
-    - echo: ${DATETIME} - configServer
-    - cmd: kill -9 $(lsof -t -i tcp:${port})
-    - cmd: |
-        echo '
+    - echo: ${datetime} - configServer
+    - kill-port: ${port}
+    - create-file:
+        file: ${projectDir}/continuous-seed-test/config.js
+        content: |
           export const config = {
-            name:"${name}",
-            environment:"${environment}",
-            port:${port}
+              name:"${name}",
+              environment:"${environment}",
+              port:${port}
           }
-        ' > ${projectDir}/continuous-seed-test/config.js
     - cmd:
         app: npm
         args: install
@@ -27,14 +27,14 @@ tasks:
         app: npm
         args: start
         workingDirectory: ${projectDir}/continuous-seed-test/
-        background: true
+        background: mhaProcess
 jobs:
   - cloneRepo:
-      - echo: ${DATETIME} - cloneRepo
+      - echo: ${datetime} - cloneRepo
       - cmd: git clone -b ${branch} https://github.com/cloudbit-interactive/continuous-seed-test.git ${projectDir}/continuous-seed-test
       - configServer: *configServer
   - checkUpdates:
-      - echo: ${DATETIME} - checkUpdates
+      - echo: ${datetime} - checkUpdates
       - loop:
           sleepTime: 10000
           jobs:
