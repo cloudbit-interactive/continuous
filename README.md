@@ -1,10 +1,32 @@
 # Continuous Seed
-<p align="center">
+<p style="text-align: center">
   <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/seed.png?raw=true" height="100" title="hover text">
 </p>
-<p align="center">
-Light tool for continuous delivery CI/CD without extra dependencies.
+<p style="text-align: center">
+	Light tool for continuous delivery CI/CD without external dependencies.
 </p>
+
+# Yaml File Example
+
+```yaml
+vars:
+  name: SeedApp
+  environment: staging
+  port: 4000
+  branch: main
+  projectDir: /path/to/project/
+  os: ${os} # replaced with: windows, linux, mac, etc...
+  arch: ${arch} #	replaced with: amd64, arm64, etc...
+  date: ${date} # replaced with: yyyy-mm-dd
+  datetime: ${datetime} # replaced with: yyyy-mm-dd 00:00:00
+tasks:
+  my-first-task: &my-first-task-anchor
+		echo: device=${os} # output: device=mac
+jobs:
+	- cmd: echo 'Hello Seed' # output: Hello Seed 
+  - execute-first-task: *my-first-task-anchor
+	-	other-job: 
+```
 
 # Generate Binaries
 ```
