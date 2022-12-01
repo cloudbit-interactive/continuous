@@ -86,19 +86,19 @@ func YamlJob(job map[string]interface{}) {
 		} else if key == CreateFolder {
 			output := CreateDir(ReplaceString(job[CreateFolder].(string)))
 			YamlOutput = append(YamlOutput, output)
-		} else if key == KillPortConst {
-			ports := job[KillPortConst]
-			if cuppago.Type(ports) == "int" {
-				ports = cuppago.String(ports)
-			}
-			output := KillPorts(ReplaceString(ports.(string)))
-			YamlOutput = append(YamlOutput, output)
 		} else if key == Delete {
 			output := DeletePath(ReplaceString(job[Delete].(string)))
 			YamlOutput = append(YamlOutput, output)
 		} else if key == Move {
 			conf := job[Move].(map[string]interface{})
 			output := MovePath(ReplaceString(conf["from"].(string)), ReplaceString(conf["to"].(string)))
+			YamlOutput = append(YamlOutput, output)
+		} else if key == KillPortConst {
+			ports := job[KillPortConst]
+			if cuppago.Type(ports) == "int" {
+				ports = cuppago.String(ports)
+			}
+			output := KillPorts(ReplaceString(ports.(string)))
 			YamlOutput = append(YamlOutput, output)
 		} else if key == Echo {
 			output := YamlEcho(cuppago.String(job[Echo]))

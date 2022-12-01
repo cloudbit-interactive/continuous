@@ -27,7 +27,7 @@ tasks:
         app: npm
         args: start
         workingDirectory: ${projectDir}/continuous-seed-test/
-        background: mhaProcess
+        background: true
 jobs:
   - cloneRepo:
       - echo: ${datetime} - cloneRepo
