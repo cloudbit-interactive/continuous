@@ -63,7 +63,7 @@ tasks:
         jobs:
           - cmd: echo $RANDOM
           - cmd: echo ${datetime}
-#    - stop: true # this command stop the execution
+    #- stop: true # this command stop the execution
 jobs:
   - execute-basic-task: *basic-commands-anchor
   - execute-other-job: *other-commands-anchor
