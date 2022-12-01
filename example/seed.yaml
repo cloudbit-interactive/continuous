@@ -53,7 +53,7 @@ jobs:
   - createService: *createService
   - cloneRepo:
       - echo: ${datetime} - cloneRepo
-      - cmd: git clone -b ${branch} https://github.com/cloudbit-interactive/continuous-seed-test.git ${projectDir}/continuous-seed-test
+      - cmd: git clone ${branch}
       - configServer: *configServer
   - checkUpdates:
       - echo: ${datetime} - checkUpdates
