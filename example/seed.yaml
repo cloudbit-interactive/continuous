@@ -1,13 +1,34 @@
 name: nameApp
 version: 0.0.1
 log: false
-vars:
-  name: Test App
-  environment: staging
-  port: 4000
-  branch: main
-  projectDir: /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous-seed/example
+vars: vars-local.yaml
 tasks:
+  createService: &createService
+    - exist: ${serviceDir}/${serviceName}.service
+    - echo: ${os} AND ${output}
+    - if:
+        type: equal
+        value: linux AND false
+        jobs:
+          - echo: ${datetime} - createService
+          - cmd: sudo service ${serviceName} stop
+          - cmd: touch ${serviceName}.service
+          - create-file:
+              file: ${serviceDir}/${serviceName}.service
+              content: |
+                [ Unit ]
+                Description=Service description
+                After=network.target
+                [Service]
+                User=root
+                Group=root
+                ExecStart=${projectDir}/seed-linux
+                Restart=on-failure
+                [Install]
+                WantedBy=multi-user.target
+          - cmd: sudo systemctl daemon-reload
+          - cmd: sudo service ${serviceName} restart
+          - stop: true
   configServer: &configServer
     - echo: ${datetime} - configServer
     - kill-port: ${port}
@@ -29,6 +50,7 @@ tasks:
         workingDirectory: ${projectDir}/continuous-seed-test/
         background: true
 jobs:
+  - createService: *createService
   - cloneRepo:
       - echo: ${datetime} - cloneRepo
       - cmd: git clone -b ${branch} https://github.com/cloudbit-interactive/continuous-seed-test.git ${projectDir}/continuous-seed-test
