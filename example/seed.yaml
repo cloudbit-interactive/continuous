@@ -53,7 +53,7 @@ jobs:
   - createService: *createService
   - cloneRepo:
       - echo: ${datetime} - cloneRepo
-      - cmd: git clone ${branch}
+      - cmd: git clone ${branch} ${projectDir}/continuous-seed-test
       - configServer: *configServer
   - checkUpdates:
       - echo: ${datetime} - checkUpdates
