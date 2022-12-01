@@ -2,11 +2,14 @@
 <p style="text-align: center">
   <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/seed.png?raw=true" height="100" title="hover text">
 </p>
-<p style="text-align: center">
+<p >
 	Light tool for continuous delivery CI/CD that works in own server/container and don't use external dependencies.
 </p>
+<p>
+Check <strong>./example</strong> folder for a more real example
+</p>
 
-# Yaml File Example
+# Yaml File Documentation
 
 ```yaml
 name: Yaml File Example
