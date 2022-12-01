@@ -15,52 +15,52 @@ vars:
   port: 4000
   branch: main
   projectDir: /var/seed-test
-  systemOS: ${os}		# replaced with: windows, linux, mac, etc...
-  arch: ${arch}		#	replaced with: amd64, arm64, etc...
-  date: ${date}		# replaced with: yyyy-mm-dd
-  datetime: ${datetime}		# replaced with: yyyy-mm-dd 00:00:00
+  systemOS: ${os} # replaced with: windows, linux, mac, etc...
+  arch: ${arch} # replaced with: amd64, arm64, etc...
+  date: ${date} # replaced with: yyyy-mm-dd
+  datetime: ${datetime} # replaced with: yyyy-mm-dd 00:00:00
 tasks:
   basic-commands: &basic-commands-anchor
-  	- echo: device=${systemOS}		# echo command printing a string with a variable defined above > output: device=mac	
-    - echo: ${os}		# use a system pre-defined value > output: mac
-    - cmd: echo $RANDOM		# execute > echo $RANDOM > output: RANDOM_NUMBER
-    - var-my-first-variable: ${output}		# define a personal variable using var-NAME, in this case is storing the output of the previews command
-    - echo: my-first-variable=${my-first-variable}		# printing the variable created previously > output: my-first-variable=20208
+    - echo: device=${systemOS} # echo command printing a string with a variable defined  above > output: device=mac
+    - echo: ${os} # use a system pre-defined value > output: mac
+    - cmd: echo $RANDOM # execute > echo $RANDOM > output: RANDOM_NUMBER
+    - var-my-first-variable: ${output} # define a personal variable using var-NAME, in this case is storing the output of the previews command
+    - echo: my-first-variable=${my-first-variable} # printing the variable created previously > output: my-first-variable=20208
   other-commands: &other-commands-anchor
-    - create-file:		# create a file in a specific folder, if folder doesn't exist it will be auto-created
-				file:  ${projectDir}/folder1/folder2/config.js
-				content: |
+    - create-file: # create a file in a specific folder, if folder doesn't exist it will be auto-created
+      file:  ${projectDir}/folder1/folder2/config.js
+      content: |
           export const config = {
-             name:"${name}",
-             environment:"${environment}",
-             port:${port}
-         	}
-    - create-folder: ${projectDir}/folder1/folder2		# create folder
-		- delete: ${projectDir}/tmp/		# delete folder or file
-	  - kill-port: ${port}		# will kill process executing in a specific port or ports > 4000, 8080, 80, 443
-    - cmd: echo 1		# execute a command. It uses bash -c in UNIX or powershell in windows
-    - cmd:		# another way to execute command is passing the app, args, workingDirectory, separator and background params
-				app: npm
+            name:"${name}",
+            environment:"${environment}",
+            port:${port}
+          }
+    - create-folder: ${projectDir}/folder1/folder2 # create folder
+    - delete: ${projectDir}/tmp/ # delete folder or file
+    - kill-port: ${port} # will kill process executing in a specific port or ports > 4000, 8080, 80, 443
+    - cmd: echo 1 # execute a command. It uses bash -c in UNIX or powershell in windows
+    - cmd: # another way to execute command is passing the app, args, workingDirectory, separator and background params
+        app: npm
         args: install
         workingDirectory: ${projectDir}/continuous-seed-test/
-        # separator:		# args separator, default = ' '
-        # background: true		# execute command in background to prevent blocking main job
+        # separator: # args separator, default = ' '
+        # background: true # execute command in background to prevent blocking main job
     - echo: ${os}
-    - if:		# validate the previous output and execute jobs if condition apply
-				type: equal		# equal, equal! (not equal), contain, contain! (no contain)
-				value: mac
-				jobs:
-					- echo: this is mac
-				  - cmd: sw_vers -productVersion		# get mac version > output: x.x.x
-		- loop:		# execute a loop each x time in milliseconds
-      		sleepTime: 10000
-		      jobs:
-			      - cmd: echo $RANDOM
-		        - cmd: echo ${datetime}
-    # - stop: true		# this command stop the execution
+    - if: # validate the previous output and execute jobs if condition apply
+        type: equal # equal, equal! (not equal), contain, contain! (no contain)
+        value: mac
+        jobs:
+          - echo: this is mac
+          - cmd: sw_vers -productVersion # get mac version > output: x.x.x
+    - loop: # execute a loop each x time in milliseconds
+      	sleepTime: 10000
+        jobs:
+          - cmd: echo $RANDOM
+          - cmd: echo ${datetime}
+    - stop: true # this command stop the execution
 jobs:
   - execute-basic-task: *basic-commands-anchor
-	-	other-job: *other-commands-anchor
+  - other-job: *other-commands-anchor
 ```
 
 # Generate Binaries
