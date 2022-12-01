@@ -3,7 +3,7 @@ version: 0.0.1
 log: false
 vars: vars-local.yaml
 tasks:
-  createService: &createService
+  createLinuxService: &createLinuxService
     - exist: ${serviceDir}/${serviceName}.service
     - echo: ${os} AND ${output}
     - if:
@@ -50,7 +50,7 @@ tasks:
         workingDirectory: ${projectDir}/continuous-seed-test/
         background: true
 jobs:
-  - createService: *createService
+  - createLinuxService: *createLinuxService
   - cloneRepo:
       - echo: ${datetime} - cloneRepo
       - cmd: git clone ${branch} ${projectDir}/continuous-seed-test
