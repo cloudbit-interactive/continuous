@@ -3,5 +3,5 @@ environment: staging
 projectDir: /Users/tufikchediak/mega/server/projects/cloudbit/repositories/continuous-seed/example
 branch: -b main https://github.com/cloudbit-interactive/continuous-seed-test.git
 port: 4000
-serviceName: mha
+serviceName: continuousSeedTest
 serviceDir: /etc/systemd/system
