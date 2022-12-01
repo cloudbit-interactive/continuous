@@ -66,6 +66,13 @@ func DeletePath(path string) string {
 	return path
 }
 
+func ExistPath(path string) bool {
+	if _, err := os.Stat(path); err != nil {
+		return false
+	}
+	return true
+}
+
 func MovePath(from string, to string) string {
 	fromFile, err := os.Open(from)
 	if err != nil {

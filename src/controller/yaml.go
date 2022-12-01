@@ -89,6 +89,9 @@ func YamlJob(job map[string]interface{}) {
 		} else if key == Delete {
 			output := DeletePath(ReplaceString(job[Delete].(string)))
 			YamlOutput = append(YamlOutput, output)
+		} else if key == Exist {
+			output := ExistPath(ReplaceString(job[Exist].(string)))
+			YamlOutput = append(YamlOutput, cuppago.String(output))
 		} else if key == Move {
 			conf := job[Move].(map[string]interface{})
 			output := MovePath(ReplaceString(conf["from"].(string)), ReplaceString(conf["to"].(string)))

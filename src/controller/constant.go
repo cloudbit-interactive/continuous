@@ -14,5 +14,6 @@ const (
 	CreateFolder    = "create-folder"
 	Delete          = "delete"
 	Move            = "move"
+	Exist           = "exist"
 	KillPortConst   = "kill-port"
 )
