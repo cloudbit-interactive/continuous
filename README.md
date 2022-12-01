@@ -3,7 +3,7 @@
   <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/seed.png?raw=true" height="100" title="hover text">
 </p>
 <p style="text-align: center">
-	Light tool for continuous delivery CI/CD without external dependencies.
+	Light tool for continuous delivery CI/CD that works in own server/container and don't use external dependencies.
 </p>
 
 # Yaml File Example
