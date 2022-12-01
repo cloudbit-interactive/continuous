@@ -36,7 +36,7 @@ jobs:
   - checkUpdates:
       - echo: ${datetime} - checkUpdates
       - loop:
-          sleepTime: 10000
+          interval: 10000
           jobs:
             - cmd: git -C ${projectDir}/continuous-seed-test reset --hard
             - cmd: git -C ${projectDir}/continuous-seed-test pull

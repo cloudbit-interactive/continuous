@@ -175,7 +175,7 @@ func YamlLoop(data map[string]interface{}) {
 	if jobs == nil {
 		return
 	}
-	sleepTime, err := time.ParseDuration(fmt.Sprint(data["sleepTime"]) + "ms")
+	sleepTime, err := time.ParseDuration(fmt.Sprint(data["interval"]) + "ms")
 	if err != nil {
 		cuppago.Error(err)
 		return
