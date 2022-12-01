@@ -9,7 +9,7 @@
 # Yaml File Example
 
 ```yaml
-name: SeedApp
+name: Yaml File Example
 version: 0.0.1
 log: true # check log/ folder: false > only print echo commands, true > print all output in console on log/
 vars:
@@ -59,14 +59,14 @@ tasks:
           - echo: this is mac
           - cmd: sw_vers -productVersion # get mac version > output: x.x.x
     - loop: # execute a loop each x time in milliseconds
-        sleepTime: 10000
+        sleepTime: 5000
         jobs:
           - cmd: echo $RANDOM
           - cmd: echo ${datetime}
-    - stop: true # this command stop the execution
+#    - stop: true # this command stop the execution
 jobs:
   - execute-basic-task: *basic-commands-anchor
-  - other-job: *other-commands-anchor
+  - execute-other-job: *other-commands-anchor
 ```
 
 # Generate Binaries
