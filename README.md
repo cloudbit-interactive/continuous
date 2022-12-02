@@ -106,7 +106,7 @@ jobs:
   - execute-other-job: *other-commands-anchor
 ```
 
-### Generate Binaries
+### Generate Binaries (Golang)
 ```
 GOOS=windows GOARCH=amd64 go build -ldflags="-w -s" -o bin/seed-windows-amd64.exe src/main.go;
 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o bin/seed-linux-amd64 src/main.go; 
