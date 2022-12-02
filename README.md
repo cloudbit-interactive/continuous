@@ -1,15 +1,51 @@
 # Continuous Seed
-<p align="center">
+<p style="text-align: center">
   <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/seed.png?raw=true" height="100" title="hover text">
 </p>
 <p>
-	Light tool for continuous delivery CI/CD that works in own server/container and don't use external dependencies.
+	Light tool for continuous delivery CI/CD that works in the own server/container without external dependencies, runtimes, and almost no consume CPU/RAM.
+</p>
+<p>
+	The original idea of this project is to provide just a seed with internal instructions to create, configure and update itself automatically without any intervention.
 </p>
 <p>
 Check <strong>./example</strong> folder for a more real example
 </p>
 
-# Yaml File Documentation
+### Folder structure
+```shell
+.
+└── projectDir
+    ├── seed.yaml
+    └── seed # the corresponding binary to use (windows, linux or mac)
+```
+
+### Current Implementation
+
+<ul>
+	<li>Variables</li>
+	<li>Dynamic variables</li>
+	<li>System variables</li>
+	<li>Echo</li>
+	<li>Cmd</li>
+	<li>Loop</li>
+	<li>If</li>
+	<li>Kill Port</li>
+	<li>Create Folder</li>
+	<li>Create File</li>
+	<li>Exist</li>
+	<li>Delete</li>
+</ul>
+
+### Future
+
+<ul>
+	<li>For</li>
+	<li>Expand If</li>
+	<li>Expand Loop</li>
+</ul>
+
+### Yaml File Documentation
 
 ```yaml
 name: Yaml File Example
@@ -71,7 +107,7 @@ jobs:
   - execute-other-job: *other-commands-anchor
 ```
 
-# Generate Binaries
+### Generate Binaries
 ```
 GOOS=windows GOARCH=amd64 go build -ldflags="-w -s" -o bin/seed-windows-amd64.exe src/main.go;
 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o bin/seed-linux-amd64 src/main.go; 
