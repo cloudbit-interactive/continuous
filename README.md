@@ -97,7 +97,7 @@ tasks:
         jobs:
           - echo: this is mac
           - cmd: sw_vers -productVersion # get mac version > output: x.x.x
-    - loop: # execute a loop each x time in milliseconds
+    - loop: # execute a loop with an interval time in milliseconds
         interval: 5000
         jobs:
           - cmd: echo $RANDOM
