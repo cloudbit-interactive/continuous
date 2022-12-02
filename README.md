@@ -1,8 +1,8 @@
 # Continuous Seed
-<p style="text-align: center">
+<p align="center">
   <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/seed.png?raw=true" height="100" title="hover text">
 </p>
-<p >
+<p>
 	Light tool for continuous delivery CI/CD that works in own server/container and don't use external dependencies.
 </p>
 <p>
