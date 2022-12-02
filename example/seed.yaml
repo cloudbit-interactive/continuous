@@ -1,8 +1,8 @@
-name: nameApp
 version: 0.0.1
 log: false
 vars: vars-local.yaml
 tasks:
+  # Configure a Linux service that auto-starts when OS restarts or manual control with > sudo service {serviceName} [start, stop, restart]
   createLinuxService: &createLinuxService
     - exist: ${serviceDir}/${serviceName}.service
     - echo: ${os} AND ${output}
@@ -22,7 +22,7 @@ tasks:
                 [Service]
                 User=root
                 Group=root
-                ExecStart=${projectDir}/seed-linux
+                ExecStart=${projectDir}/seed
                 Restart=on-failure
                 [Install]
                 WantedBy=multi-user.target

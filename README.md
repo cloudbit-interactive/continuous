@@ -48,7 +48,6 @@ Check <strong>./example</strong> folder for a more real example
 ### Yaml File Documentation
 
 ```yaml
-name: Yaml File Example
 version: 0.0.1
 log: true # check log/ folder: false > only print echo commands, true > print all output in console on log/
 vars:
