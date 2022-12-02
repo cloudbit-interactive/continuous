@@ -12,7 +12,6 @@ tasks:
         jobs:
           - echo: ${datetime} - createService
           - cmd: sudo service ${serviceName} stop
-          - cmd: touch ${serviceName}.service
           - create-file:
               file: ${serviceDir}/${serviceName}.service
               content: |
