@@ -1,5 +1,5 @@
 # Continuous Seed
-<p style="text-align: center">
+<p align="center">
   <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/seed.png?raw=true" height="100" title="hover text">
 </p>
 <p>
