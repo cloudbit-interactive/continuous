@@ -1,6 +1,6 @@
 # Continuous Seed
 <p align="center">
-  <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/seed.png?raw=true" height="100" title="hover text">
+  <img src="https://github.com/cloudbit-interactive/continuous-seed/blob/main/assets/seed.png?raw=true" height="100" title="hover text">
 </p>
 <p>
 	Light tool for continuous delivery CI/CD that works in the own server/container without external dependencies, runtimes, and almost no consume CPU/RAM.
