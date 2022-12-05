@@ -96,7 +96,7 @@ func Command(app string, args []string, workingDirectory string, backgroundName 
 }
 
 func Log(values ...interface{}) {
-	if YamlData["log"] != true {
+	if YamlData["debug"] != true {
 		return
 	}
 	cuppago.LogFile(values...)

@@ -1,5 +1,5 @@
 version: 0.0.1
-log: false
+debug: false
 vars: vars-local.yaml
 tasks:
   # Configure a Linux service that auto-starts when OS restarts or manual control with > sudo service {serviceName} [start, stop, restart]

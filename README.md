@@ -40,6 +40,7 @@ Check <strong>./example</strong> folder for a more real example
 ### Future
 
 <ul>
+	<li>Replace</li>
 	<li>For</li>
 	<li>Expand If</li>
 	<li>Expand Loop</li>
@@ -49,7 +50,7 @@ Check <strong>./example</strong> folder for a more real example
 
 ```yaml
 version: 0.0.1
-log: true # check log/ folder: false > only print echo commands, true > print all output in console on log/
+debug: true # check log/ folder: false > only print echo commands, true > print all output in console on log/
 vars:
   name: SeedApp
   environment: staging
