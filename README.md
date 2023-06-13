@@ -42,8 +42,8 @@ Check <strong>./example</strong> folder for a more real example
 <ul>
 	<li>Replace</li>
 	<li>For</li>
-	<li>Expand If</li>
-	<li>Expand Loop</li>
+	<li>Improve If</li>
+	<li>Improve Loop</li>
 </ul>
 
 ### Yaml File Documentation
