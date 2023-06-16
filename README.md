@@ -90,6 +90,10 @@ tasks:
         workingDirectory: ${projectDir}/continuous-seed-test/
         # separator: # args separator, default = ' '
         # background: true # execute command in background to prevent blocking main job
+    - cmd: # another way to execute command is passing the app, args, workingDirectory, separator and background params
+        app: ./my-app
+        workingDirectory: ${projectDir}/continuous-seed-test/
+        background: true
     - echo: ${os}
     - if: # validate the previous output and execute jobs if condition apply
         type: equal # equal, equal! (not equal), contain, contain! (no contain)
