@@ -70,6 +70,7 @@ func BashCommand(command string) string {
 }
 
 func Command(app string, args []string, workingDirectory string, backgroundName string) string {
+	app = ReplaceString(app)
 	for i := 0; i < len(args); i++ {
 		args[i] = strings.TrimSpace(ReplaceString(args[i]))
 	}
