@@ -35,9 +35,14 @@ tasks:
     - cmd: echo 1 # execute a command. It uses bash -c in linux, mac and powershell in windows
     - cmd: # another way to execute command is passing the app, args, workingDirectory, separator and background params
         app: npm
-
+        args: start
         workingDirectory: ${projectDir}/continuous-seed-test/
-        # separator: # args separator, default = ' '
+        # separator: # arguments separator, default = ' '
+        # background: true # execute command in background to prevent blocking main job
+    - cmd: # another way to execute command is passing the app, args, workingDirectory, separator and background params
+        app: ./myapp
+        workingDirectory: ${projectDir}/continuous-seed-test/
+        # separator: # arguments separator, default = ' '
         # background: true # execute command in background to prevent blocking main job
     - echo: ${os}
     - if: # validate the previous output and execute jobs if condition apply
